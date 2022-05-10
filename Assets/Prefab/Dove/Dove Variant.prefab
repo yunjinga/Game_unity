@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4902348691586212764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8853807029818991357, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd2a6b8d0f587b6418de28231a2db529, type: 2}
+    - target: {fileID: -8757200487498479898, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd2a6b8d0f587b6418de28231a2db529, type: 2}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.22727
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.17703
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3805243077557801347, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd2a6b8d0f587b6418de28231a2db529, type: 2}
+    - target: {fileID: 919132149155446097, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+      propertyPath: m_Name
+      value: Dove
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+--- !u!1 &5244949708821356237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+  m_PrefabInstance: {fileID: 4902348691586212764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &224498122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244949708821356237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195e3e3ac9aab294fa8bf9dd9b695332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: L1
+  player: {fileID: 0}
+  duihua: {fileID: 0}
+  text: {fileID: 0}
+  texture_1_1: {fileID: 0}
+  texture_1_2: {fileID: 0}
+  rectTransform: {fileID: 0}

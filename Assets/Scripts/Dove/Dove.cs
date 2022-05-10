@@ -106,6 +106,7 @@ public class Dove : MonoBehaviour
     public GameObject texture_1_2;
     public RectTransform rectTransform;
     int num_texture = 0;
+    bool isAll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -134,9 +135,10 @@ public class Dove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(now);
         if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && now < num-1)
+            if (Input.GetKeyDown(KeyCode.Space) && now < num - 1)
             {
                 duihua.SetActive(true);
                 gudin();
@@ -144,18 +146,19 @@ public class Dove : MonoBehaviour
                 Debug.Log(s[now]);
                 text.text = s[now++];
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && now == num-1)
+            else if (Input.GetKeyDown(KeyCode.Space) && now == num - 1 && !isAll)
             {
+                Debug.Log(111111);
                 num_texture++;
-               
+
                 if (level == "L1")
                 {
                     if (num_texture == 1)
                     {
-                        texture_1_1.SetActive(true); 
+                        texture_1_1.SetActive(true);
                         duihua.SetActive(false);
                     }
-                    
+
                     if (num_texture == 2)
                     {
                         texture_1_1.SetActive(false);
@@ -172,12 +175,21 @@ public class Dove : MonoBehaviour
                     if (num_texture == 4)
                     {
                         duihua.SetActive(false);
+                        isAll = true;
                     }
                 }
                 
             }
-            
+            else if (isAll && Input.GetKeyDown(KeyCode.Space) && !duihua.activeInHierarchy)
+            {
+                //Debug.Log(111111);
+                duihua.SetActive(true);
 
+            }
+            else if (isAll && Input.GetKeyDown(KeyCode.Space) && duihua.activeInHierarchy)
+            {
+                duihua.SetActive(false);
+            }
         }
     }
     void gudin()

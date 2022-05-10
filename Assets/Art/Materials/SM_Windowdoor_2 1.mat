@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SM_Windowdoor_2 1
+  m_Shader: {fileID: 4800000, guid: 6f260cd39a5d9af4da1e83477d2f2e59, type: 3}
+  m_ShaderKeywords: _KEYWORD0_ON
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlbedoTexture:
+        m_Texture: {fileID: 2800000, guid: c9f55381ae8a6234a816fa3ae4265075, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: 3b35410cbabfad54fbeb3e5101f6d524, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColorRGBOutlineWidthA:
+        m_Texture: {fileID: 2800000, guid: c46a83e2702eb1644a99dcc1bae9adc4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Highlight:
+        m_Texture: {fileID: 2800000, guid: c46a83e2702eb1644a99dcc1bae9adc4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metallic:
+        m_Texture: {fileID: 2800000, guid: 4f9312432d32bae47b4a03729e0c36df, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicTexture:
+        m_Texture: {fileID: 2800000, guid: 8a4f8f1af83ab8b4c82d214b3d41467c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 0e5391ac46c271c448ce17acdacefc08, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 799510af098edde439dd11164e0fd418, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexture:
+        m_Texture: {fileID: 2800000, guid: 93bb9f78ea941dd41813d6b42dc60f78, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughness:
+        m_Texture: {fileID: 2800000, guid: 2999943f45ccccb4fb3adeaf1b6946ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessTexture:
+        m_Texture: {fileID: 2800000, guid: d7dd3c46e429268439e59f1850af6c46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Specular:
+        m_Texture: {fileID: 2800000, guid: d0e02d16b9b1ab349a4dc2481cc01d37, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BaseCellOffset: 0.4
+    - _BaseCellSharpness: 1
+    - _BaseCellshadeOffset: 0
+    - _BaseCellshadeSharpness: 0.01
+    - _ChromaticAberration: 0.1
+    - _Cutoff: 0.5
+    - _DiffuseCellshadeOffset: 0
+    - _DiffuseCellshadeSharpness: 0.01
+    - _EmissiveMultiplier: 0
+    - _Float0: 1
+    - _Float1: 0
+    - _HighlightCellOffset: -0.828
+    - _HighlightCellSharpness: 0.319
+    - _IndirectContribution: 0.762
+    - _IndirectDiffuseContribution: 1
+    - _IndirectSpecularContribution: 0.982
+    - _Keyword0: 1
+    - _MetallicMultiplier: 0.236
+    - _Metallic_fix: -1
+    - _NormalIntensity: 0.38
+    - _NormalScale: 1
+    - _OutlineWidth: 0.005
+    - _RimOff: 0.6
+    - _RimOffset: 0.556
+    - _RimPower: 1
+    - _Roughness_fix: -1
+    - _ShadowContribution: 0.9
+    - _SmoothnessMultiplier: 0
+    - _SpecularOffset: -0.95
+    - _SpecularSharpness: 0.01
+    - _StaticHighLights: 0
+    - _TessMax: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 1
+    - _TransAmbient: 0.2
+    - _TransDirect: 1
+    - _TransNormalDistortion: 0.1
+    - _TransScattering: 2
+    - _TransShadow: 0.9
+    - _Translucency: 1
+    - _Transprency: 1
+    - __dirty: 0
+    m_Colors:
+    - _AlbedoTint: {r: 0.59073514, g: 0.68358576, b: 0.7075472, a: 0}
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
+    - _Color1: {r: 1, g: 1, b: 1, a: 0}
+    - _Color_fix: {r: 0.6981132, g: 0.58944464, b: 0.58944464, a: 0}
+    - _HighlightTint: {r: 0.1081128, g: 0.051804047, b: 0, a: 1}
+    - _Opacity: {r: 0, g: 0, b: 0, a: 0}
+    - _Opacity1: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineTint: {r: 1, g: 1, b: 1, a: 0}
+    - _RimColor: {r: 0.4245283, g: 0.3547368, b: 0.27033642, a: 1}
+    - _SpecularTint: {r: 1, g: 1, b: 1, a: 1}
+    - _TilingOffset: {r: 0.54, g: 0, b: 0, a: 0}
+    - _TilingScale: {r: 1, g: 1, b: 0, a: 0}
+    - _TintBaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Transprency: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

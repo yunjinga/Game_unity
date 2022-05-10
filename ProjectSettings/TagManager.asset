@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - player
+  - Enemy
+  - box
+  - stone
+  - player0
+  - Undefined
+  - sphere
+  - Enemy2
+  - Crow_Apose
+  - hammer
+  - apple1
+  - hammer1
+  - koushao1
+  - apple2
+  - hammer2
+  - koushao2
+  - Bike
+  - UI
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Obstacle
+  - Water
+  - UI
+  - Enemy
+  - Postprocessing
+  - OcclusionTran
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

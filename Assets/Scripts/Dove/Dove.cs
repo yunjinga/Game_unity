@@ -148,7 +148,7 @@ public class Dove : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space) && now == num - 1 && !isAll)
             {
-                Debug.Log(111111);
+                //Debug.Log(111111);
                 num_texture++;
 
                 if (level == "L1")
@@ -177,6 +177,16 @@ public class Dove : MonoBehaviour
                         duihua.SetActive(false);
                         isAll = true;
                     }
+                }
+                else if(level != "L1" && num_texture==1)
+                {
+                    duihua.SetActive(true);
+                    text.text = s[now];
+                }
+                else if(level != "L1" && num_texture == 2)
+                {
+                    duihua.SetActive(false);
+                    isAll = true;
                 }
                 
             }

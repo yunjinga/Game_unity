@@ -20,6 +20,7 @@ public class jingjie1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         jingjie_1.value = transform.GetComponent<enemy>().waring / 20;
         jingjie_2.value = (transform.GetComponent<enemy>().waring - 20) / 20;
         screenPos = Camera.main.WorldToScreenPoint(follow.transform.position);

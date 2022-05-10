@@ -22,7 +22,16 @@ public class child : MonoBehaviour
     public CinemachineVirtualCamera cvam;
     public GameObject biaoqing_1;
     public GameObject biaoqing_2;
-    float wait = 0;
+
+    int now = 1;
+    string[] s = new string[50];
+    static string localPath = "Assets" + "\\" + "streamingAssetsPath" + "\\" + "child.xml";
+    XmlDocument xml;
+    XmlNodeList nodeList;
+    int num = 1;
+    public string level;//child几
+
+    bool isAll = false;
     //bool istalk = false;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +43,21 @@ public class child : MonoBehaviour
         biaoqing_2.SetActive(false);
         biaoqing_1.SetActive(true);
         ator = transform.GetComponent<Animator>();
+        if (File.Exists(localPath))
+        {
+            xml = new XmlDocument();
+            xml.Load(localPath);//加载xml文件
+            nodeList = xml.SelectSingleNode("Data").ChildNodes;
+            foreach (XmlElement xe in nodeList)
+            {
+                if (xe.Name == level)
+                {
+                    //Debug.Log(xe.GetAttribute("对话"));     
+                    s[num++] = xe.GetAttribute("对话");
+                }
+
+            }
+        }
     }
 
     // Update is called once per frame
@@ -41,43 +65,57 @@ public class child : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
-           
-            
+            Debug.Log(now+" "+num);
             tishi.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space) && !istalk)
+            if (Input.GetKeyDown(KeyCode.Space)  && now < num)
             {
-                Debug.Log(wait);
-               
-                    duihua.SetActive(true);
-                    wait = 2.1f;
-               
-               
+                duihua.SetActive(true);
                 duihua_1.SetActive(true);
                 biaoqing_1.SetActive(false);
                 biaoqing_2.SetActive(true);
                 cvam.Priority = 11;
                 //gudin();
-                text.text = "妈妈说你现在虽然是小猪，但有一天会变成大肥猪";
+                text.text = s[now++];
                 istalk = true;
                 ator.SetBool("isTalk", true);
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && istalk)
+            else if (Input.GetKeyDown(KeyCode.Space) && istalk && now == num  && !isAll)
             {
                 duihua_1.SetActive(false);
-                wait = 0;
                 cvam.Priority = 5;
                 duihua.SetActive(false);
                 istalk=false;
                 biaoqing_2.SetActive(false);
                 biaoqing_1.SetActive(true);
                 ator.SetBool("isTalk", false);
-                
+                isAll = true;
+            }
+            //如果说完了则进行最后一句
+            else if(Input.GetKeyDown(KeyCode.Space) && isAll)
+            {
+                duihua.SetActive(true);
+                duihua_1.SetActive(true);
+                biaoqing_1.SetActive(false);
+                biaoqing_2.SetActive(true);
+                cvam.Priority = 11;
+                istalk = true;
+                ator.SetBool("isTalk", true);
+            }
+            else if(Input.GetKeyDown(KeyCode.Space) && duihua.activeInHierarchy && isAll)
+            {
+                duihua_1.SetActive(false);
+                cvam.Priority = 5;
+                duihua.SetActive(false);
+                istalk = false;
+                biaoqing_2.SetActive(false);
+                biaoqing_1.SetActive(true);
+                ator.SetBool("isTalk", false);
             }
 
         }
         else
-        {tishi.SetActive(false);
-
+        {
+            tishi.SetActive(false);
         }
     }
     //void gudin()

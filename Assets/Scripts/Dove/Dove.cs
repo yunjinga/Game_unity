@@ -178,7 +178,7 @@ public class Dove : MonoBehaviour
                         isAll = true;
                     }
                 }
-                else if(level != "L1" && num_texture==1)
+                else if(level != "L1" && num_texture== 1)
                 {
                     duihua.SetActive(true);
                     text.text = s[now];

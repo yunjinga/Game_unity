@@ -59,7 +59,11 @@ public class enemy2 : MonoBehaviour
     public Vector3 beginrotation;
     //lxy
     public Material material;
-
+    private void Awake()
+    {
+        begin = transform.position;
+        Debug.Log("11111 " + begin);
+    }
     void Start()
     {
         //rectTransform_two.gameObject.SetActive(false);
@@ -71,7 +75,8 @@ public class enemy2 : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
 
-        begin = transform.position;
+        
+        
 
         ator = transform.GetComponent<Animator>();
         isCatching = false;
@@ -371,9 +376,12 @@ public class enemy2 : MonoBehaviour
             }
             else if (hitt.transform != null && hitt.transform.GetComponent<hammer>())
             {
-                //Debug.Log(1);
-                transform.gameObject.GetComponent<walkto>().isWalkto = true;
-                transform.gameObject.GetComponent<walkto>().position = hitt.transform.position;
+                if (Vector3.Distance(hitt.transform.position,hitt.transform.GetComponent<hammer>().tp)>0.2f)
+                {
+                    //Debug.Log(Vector3.Distance(hitt.transform.position, hitt.transform.GetComponent<hammer>().tp));
+                    transform.gameObject.GetComponent<walkto>().isWalkto = true;
+                    transform.gameObject.GetComponent<walkto>().position = hitt.transform.position;
+                }
             }
         }
 
@@ -425,6 +433,7 @@ public class enemy2 : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, begin) > 0.1f && !transform.GetComponent<walkto>().isWalkto)
         {
+            Debug.Log(begin+" "+transform.position);
             agent.destination = begin;
             ator.SetBool("isRun", false);
             ator.SetBool("isWalk", true);

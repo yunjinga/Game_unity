@@ -142,9 +142,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &590244212377179260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5556998163908514636, guid: 68a8c85281d1458439d98e076b676f9e, type: 3}
+  m_PrefabInstance: {fileID: 4985092917505492784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6982347996451220763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2722658085827619371, guid: 68a8c85281d1458439d98e076b676f9e, type: 3}
+  m_PrefabInstance: {fileID: 4985092917505492784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3539702632580429848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8372498826992533288, guid: 68a8c85281d1458439d98e076b676f9e, type: 3}
   m_PrefabInstance: {fileID: 4985092917505492784}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &-6931930082321419439
@@ -159,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18191db015598b24cb142356461044e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8123227224453721108
+--- !u!114 &5898623108481911234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +184,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3509856346749115928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f1d4d5852f30541bb91f4c2720973b, type: 3}
+  m_Script: {fileID: 11500000, guid: ebe020b9d5cbaad4a953956a3cad5aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_1: {fileID: 0}
+  jingjie_1: {fileID: 5703858237563049596}
+  jingjie_2: {fileID: 590244212377179260}
+  follow: {fileID: 0}
 --- !u!114 &8293192631190305671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,10 +237,23 @@ MonoBehaviour:
   TurnAngle: 120
   bx: {fileID: 5703858236774718058}
   oinkPostion: {x: 0, y: 0, z: 0}
-  jingjie: {fileID: 5703858237563049596}
-  jingjiehong: {fileID: 0}
   beginrotation: {x: 0, y: 0, z: 0}
   material: {fileID: 0}
+--- !u!114 &6169331670102971144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509856346749115928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe020b9d5cbaad4a953956a3cad5aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jingjie_1: {fileID: 5703858237563049596}
+  jingjie_2: {fileID: 590244212377179260}
+  follow: {fileID: 3539702632580429848}
 --- !u!114 &8991094987421827552
 MonoBehaviour:
   m_ObjectHideFlags: 0

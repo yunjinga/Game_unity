@@ -65,7 +65,7 @@ public class child : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
-            Debug.Log(now+" "+num);
+            //Debug.Log(now+" "+num);   
             tishi.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space)  && now < num)
             {
@@ -91,7 +91,7 @@ public class child : MonoBehaviour
                 isAll = true;
             }
             //如果说完了则进行最后一句
-            else if(Input.GetKeyDown(KeyCode.Space) && isAll)
+            else if(Input.GetKeyDown(KeyCode.Space) && isAll &&!istalk)
             {
                 duihua.SetActive(true);
                 duihua_1.SetActive(true);
@@ -101,7 +101,7 @@ public class child : MonoBehaviour
                 istalk = true;
                 ator.SetBool("isTalk", true);
             }
-            else if(Input.GetKeyDown(KeyCode.Space) && duihua.activeInHierarchy && isAll)
+            else if(Input.GetKeyDown(KeyCode.Space) && istalk && isAll)
             {
                 duihua_1.SetActive(false);
                 cvam.Priority = 5;

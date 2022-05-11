@@ -415,13 +415,13 @@ public class enemy : MonoBehaviour
             else if (hitt.transform != null && hitt.transform.GetComponent<hammer>())
             {
 
-                if(hitt.transform.position!= hitt.transform.GetComponent<hammer>().tp)
+                if (Vector3.Distance(hitt.transform.position, hitt.transform.GetComponent<hammer>().tp) > 0.2f)
                 {
-                    //Debug.Log(1);
+                    //Debug.Log(Vector3.Distance(hitt.transform.position, hitt.transform.GetComponent<hammer>().tp));
                     transform.gameObject.GetComponent<walkto>().isWalkto = true;
                     transform.gameObject.GetComponent<walkto>().position = hitt.transform.position;
                 }
-                
+
 
             }
 

@@ -12,6 +12,10 @@ public class child1 : MonoBehaviour
     public GameObject duihua;
     
     public Text text;
+    public Text text1;//白鸽的对话
+    public GameObject baige;
+    public GameObject wuya;
+    public GameObject zhu;
     //public RectTransform rectTransform;
     public bool istalk = false;
     public GameObject tishi;
@@ -24,9 +28,11 @@ public class child1 : MonoBehaviour
     {
         tishi.SetActive(false);
         duihua.SetActive(false);
-        
+        //baige = GameObject.Find("baige");
         cvam = GameObject.Find("CM vcam16").gameObject.GetComponent<CinemachineVirtualCamera>();
-       
+        zhu.SetActive(false);
+        wuya.SetActive(false);
+        baige.SetActive(false);
         ator = transform.GetComponent<Animator>();
     }
 
@@ -68,15 +74,32 @@ public class child1 : MonoBehaviour
                     }
                 case 3:
                     {
-                        
-                        
-                        cvam.Priority = 5;
-                        duihua.SetActive(false);
-                        istalk = false;
 
+                        text1.text = "不要听这“乌鸦嘴”的话！";
+                        //
+                        duihua.SetActive(false);
+                        wuya.SetActive(true);
+                       
+                        zhu.SetActive(true);
+                       
+                        break;
+                    }
+                case 4:
+                    {
+                        zhu.SetActive(false);
+                        wuya.SetActive(false);
+                        baige.SetActive(true);
+                        break;
+                    }
+                case 5:
+                    {
+                        baige.SetActive(false);
+                        cvam.Priority = 5;
+                        istalk = false; 
                         ator.SetBool("isTalk", false);
                         break;
                     }
+
             }
             //else if (Input.GetKeyDown(KeyCode.Space) && istalk)
             //{

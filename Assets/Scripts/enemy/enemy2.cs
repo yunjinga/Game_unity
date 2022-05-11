@@ -145,7 +145,7 @@ public class enemy2 : MonoBehaviour
                 Vector3 v = transform.localEulerAngles - rotation;
                 //Debug.Log(Mathf.Abs(v.y)+" "+rotation);
                 //Debug.Log(rotation + " " + v);
-                if (Mathf.Abs(v.y) < 0.1f)
+                if (Mathf.Abs(v.y) < 0.1f||Mathf.Abs(v.y-360)<0.1f)
                 {
                     waitTurnTime = 10f;
                     isGeneraterotation = false;

@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlbedoTexture:
-        m_Texture: {fileID: 2800000, guid: edfca3a868d3b464bba7b68f5f50ce35, type: 3}
+        m_Texture: {fileID: 2800000, guid: dcbbc289782db1a46971833bb59e2537, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
@@ -106,7 +106,7 @@ Material:
     - _Transprency: 1
     - __dirty: 0
     m_Colors:
-    - _AlbedoTint: {r: 0.8584906, g: 0.81124663, b: 0.71675867, a: 0}
+    - _AlbedoTint: {r: 1, g: 0.8946541, b: 0.6839622, a: 0}
     - _BaseTint: {r: 0.745283, g: 0.58022666, b: 0.4745906, a: 1}
     - _Color0: {r: 0, g: 0, b: 0, a: 0}
     - _Color1: {r: 1, g: 1, b: 1, a: 0}

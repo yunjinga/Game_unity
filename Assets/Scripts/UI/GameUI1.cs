@@ -46,6 +46,7 @@ public class GameUI1 : MonoBehaviour
     public GameObject[] canvas_enemy;
     public bool ishei = false;
     public bool iswhite = false;
+    ///public AudioSource audio_jixv;
     void Start()
     {
         PlayerPrefs.SetInt("isMoveCamera", 0);
@@ -220,17 +221,26 @@ public class GameUI1 : MonoBehaviour
         image_zantin.SetActive(true);
         //button_qvxiao.SetActive(true);
     }
-    public void OnClick2()//继续按钮
+    public void OnClick2()//继续图标按钮
     {
         button_stop.SetActive(true);
         button_jixv.SetActive(false);
         image_zantin.SetActive(false);
         Time.timeScale = 1;
+        
     }
-   /* public void OnClick3()//图标上的继续键
+    public void OnClick4()//继续按钮
     {
+        button_stop.SetActive(true);
+        button_jixv.SetActive(false);
         image_zantin.SetActive(false);
-    }*/
+        Time.timeScale = 1;
+
+    }
+    /* public void OnClick3()//图标上的继续键
+     {
+         image_zantin.SetActive(false);
+     }*/
     public void restart()//重新开始
     {
         SceneManager.LoadScene(0);

@@ -7,15 +7,26 @@ public class BIke : MonoBehaviour
     public bool isRight = false;
     public bool isLeft = false;
     public bool isRotating = false;
+
+    public AudioSource music;
+    public AudioClip bikeVoice;
+    bool isCompleteVoice = false;
     Vector3 r,l;
     bool isUse = false;
+    private void Awake()
+    {
+        music = gameObject.AddComponent<AudioSource>();
+        music.playOnAwake = false;
+        bikeVoice = Resources.Load<AudioClip>("Music/bike");
+    }
     // Start is called before the first frame update
+
     void Start()
     {
         r = transform.localEulerAngles;
-        r.x += 40.724f;
+        r.x += 50.724f;
         l= transform.localEulerAngles;
-        l.x += -40.724f;
+        l.x += -50.724f;
     }
 
     // Update is called once per frame
@@ -31,6 +42,18 @@ public class BIke : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(r), 3 * Time.deltaTime);
             isRotating = true;
         }
+        
+        if(isRotating)
+        {
+            if(!music.isPlaying && !isCompleteVoice)
+            {
+                music.clip = bikeVoice;
+                music.Play();
+                isCompleteVoice = true;
+            }
+            
+        }
+        
     }
     private void OnTriggerStay(Collider other)
     {

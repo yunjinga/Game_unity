@@ -9,9 +9,17 @@ public class pushApple : MonoBehaviour
     bool first = false;
     int num = 0;
     Rigidbody[] rd;
+
+    public AudioSource music;
+    public AudioClip appleVoice;
+
     public void Awake()
     {
         findChild(transform.parent.gameObject);
+
+        music = gameObject.AddComponent<AudioSource>();
+        music.playOnAwake = false;
+        appleVoice = Resources.Load<AudioClip>("Music/apple");
     }
     // Start is called before the first frame update
     void Start()
@@ -82,6 +90,8 @@ public class pushApple : MonoBehaviour
     }
     void addForce(Vector3 position)
     {
+        music.clip = appleVoice;
+        music.Play();
         foreach (Rigidbody c in rd)
         {
             c.AddExplosionForce(power, position, radius, 3.0F);

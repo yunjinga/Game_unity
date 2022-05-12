@@ -5,6 +5,14 @@ using UnityEngine;
 public class Bush : MonoBehaviour
 {
     // Start is called before the first frame update
+    
+    
+
+    private void Awake()
+    {
+       
+        
+    }
     void Start()
     {
         
@@ -21,6 +29,7 @@ public class Bush : MonoBehaviour
         {
             var yk = other.transform.GetComponent<player>();
             yk.isInvisible = false;
+            
         }
         
     }

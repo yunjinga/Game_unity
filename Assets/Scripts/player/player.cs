@@ -33,14 +33,17 @@ public class player : MonoBehaviour
     public AudioClip walkVoice;
     public AudioClip oinkVoice;
     public AudioClip bushVoice;
+    public AudioClip boxVoice;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.playOnAwake = false;
+        audioSource.volume = 0.5f;
         walkVoice= Resources.Load<AudioClip>("Music/playerWalk");
         oinkVoice= Resources.Load<AudioClip>("Music/oink");
         bushVoice = Resources.Load<AudioClip>("Music/bush");
+        boxVoice = Resources.Load<AudioClip>("Music/box");
 
     }
     void Start()
@@ -116,7 +119,7 @@ public class player : MonoBehaviour
         {
             if(ator.GetBool("isRun"))
             {
-                audioSource.pitch = 1;
+                audioSource.pitch = 0.85f;
             }
             else
             {
@@ -125,6 +128,7 @@ public class player : MonoBehaviour
             audioSource.loop = true;
             audioSource.volume = 0.7f;
         }
+       
     }
     void Oink() //吼叫
     {
@@ -220,21 +224,28 @@ public class player : MonoBehaviour
         }
         #endregion
         
-        if(sped!=Vector3.zero)
+        if(sped != Vector3.zero)
         {
             isMove = true;
-            if(!audioSource.isPlaying)
+            AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
+            // 判断动画是否播放完成
+            if (!info.IsName("walk"))
             {
-                audioSource.clip = walkVoice;
-                
-                audioSource.Play();
+         
+                if (!audioSource.isPlaying && audioSource.clip != oinkVoice)
+                {
+                    audioSource.clip = walkVoice;
+
+                    audioSource.Play();
+                }
             }
+           
             
         }
         else
         {
             isMove = false;
-            if(audioSource.isPlaying)
+            if(audioSource.isPlaying && audioSource.clip == walkVoice)
             {
                 audioSource.Stop();
             }
@@ -251,6 +262,19 @@ public class player : MonoBehaviour
         if(checkBox.Check(transform.position+vup, sped, 1f, 0.5f,speed_c))
         {
             speed = speed_c;
+            AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
+            // 判断动画是否播放完成
+            if (info.IsName("walk"))
+            {
+                if(audioSource.clip!= boxVoice)
+                {
+                    Debug.Log(33333);
+                    audioSource.clip = boxVoice;
+                    audioSource.Play();
+                }
+                    
+            }
+                
         }
         //Debug.Log(speed);
         if (sped != Vector3.zero && speed == speed_b)

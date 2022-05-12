@@ -24,6 +24,9 @@ public class Triggle_camera : MonoBehaviour
     public GameObject tishi;
     int num = 0;
     bool isstart = false;
+
+   
+
     private void Start()
     {
         tishi.SetActive(false);
@@ -31,6 +34,7 @@ public class Triggle_camera : MonoBehaviour
         //duihua_one.SetActive(false);
         //duihua_two.SetActive(false);
 
+        
     }
     private void Update()
     {
@@ -43,7 +47,7 @@ public class Triggle_camera : MonoBehaviour
         //next_duihua();
         if (isTrigger == true&&num!=0)
         {
-            Debug.Log("1");
+            //Debug.Log("1");
             tishi.SetActive(false);
             wait += Time.deltaTime;
             if (cineBody.m_CameraDistance >= 2.5)
@@ -64,7 +68,7 @@ public class Triggle_camera : MonoBehaviour
             }
             
         }
-       
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -78,6 +82,7 @@ public class Triggle_camera : MonoBehaviour
            
             isTrigger = true;
             Anim_baige.SetActive(true);
+           
             //player.gameObject.GetComponent<player>().enabled = false;
         }
 

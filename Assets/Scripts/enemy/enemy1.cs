@@ -58,7 +58,15 @@ public class enemy1 : MonoBehaviour
    
     bool isview;//是否在视野范围内
     float wait_biaoqing = 0;//表情显示时间；
-
+    public AudioSource music;
+    public AudioClip walkVoice;
+    private void Awake()
+    {
+        music = gameObject.AddComponent<AudioSource>();
+        music.playOnAwake = false;
+        music.spatialBlend = 1;
+        walkVoice = Resources.Load<AudioClip>("Music/peopleWalk");
+    }
     void Start()
     {
         biaoqing_1.SetActive(true);
@@ -127,6 +135,35 @@ public class enemy1 : MonoBehaviour
         //if (GameObject.FindWithTag("MainCamera").gameObject.GetComponent<Camera>().enabled)
         //    jingjiequan();
         //Debug.Log(transform.InverseTransformPoint(transform.position)+" "+transform.position);
+        isWalk();
+    }
+    void isWalk()
+    {
+        AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
+        if (info.IsName("run"))
+        {
+            if (!music.isPlaying)
+            {
+                music.clip = walkVoice;
+                music.Play();
+                music.pitch = 1f;
+                music.loop = true;
+            }
+        }
+        else if (info.IsName("walk"))
+        {
+            if (!music.isPlaying)
+            {
+                music.clip = walkVoice;
+                music.Play();
+                music.pitch = 0.7f;
+                music.loop = true;
+            }
+        }
+        else
+        {
+            music.Stop();
+        }
     }
     //void jingjiequan()//警戒值的slider
     //{

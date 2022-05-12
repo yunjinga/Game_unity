@@ -59,10 +59,17 @@ public class enemy2 : MonoBehaviour
     public Vector3 beginrotation;
     //lxy
     public Material material;
+    public AudioSource music;
+    public AudioClip walkVoice;
     private void Awake()
     {
         begin = transform.position;
-        Debug.Log("11111 " + begin);
+
+        music = gameObject.AddComponent<AudioSource>();
+        music.playOnAwake = false;
+        music.spatialBlend = 1;
+        walkVoice = Resources.Load<AudioClip>("Music/peopleWalk");
+        //Debug.Log("11111 " + begin);
     }
     void Start()
     {
@@ -153,6 +160,35 @@ public class enemy2 : MonoBehaviour
             }
         }
         //Debug.Log(transform.InverseTransformPoint(transform.position)+" "+transform.position);
+        isWalk();
+    }
+    void isWalk()
+    {
+        AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
+        if (info.IsName("run"))
+        {
+            if (!music.isPlaying)
+            {
+                music.clip = walkVoice;
+                music.Play();
+                music.pitch = 1f;
+                music.loop = true;
+            }
+        }
+        else if (info.IsName("walk"))
+        {
+            if (!music.isPlaying)
+            {
+                music.clip = walkVoice;
+                music.Play();
+                music.pitch = 0.7f;
+                music.loop = true;
+            }
+        }
+        else
+        {
+            music.Stop();
+        }
     }
     //新加的
     //void jingjiequan()//警戒值的slider

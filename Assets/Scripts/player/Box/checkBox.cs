@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class checkBox : MonoBehaviour
 {
+   
     public static bool Check(Vector3 location, Vector3 direct, float distance, float dis,float speed)  //使用函数的位置，方向，距离
     {
         RaycastHit hit;
@@ -30,6 +31,7 @@ public class checkBox : MonoBehaviour
                     change = direct;
                 }
                 hit.transform.Translate(change * Time.deltaTime*speed, Space.World);
+                
                 return true;
                 //hit.transform.position = hit.transform.position + change * Time.deltaTime;
             }
@@ -37,6 +39,7 @@ public class checkBox : MonoBehaviour
             {
                 change = direct;
                 return false;
+                
             }
         }
         else

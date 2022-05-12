@@ -29,13 +29,19 @@ public class player : MonoBehaviour
     public float yOffset;
     public RectTransform recTransform;
     public bool isComplete = false;
-    
-    
+
+    public AudioClip walkVoice;
+    public AudioClip oinkVoice;
+    public AudioClip bushVoice;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.Stop();
-        
+        audioSource.playOnAwake = false;
+        walkVoice= Resources.Load<AudioClip>("Music/playerWalk");
+        oinkVoice= Resources.Load<AudioClip>("Music/oink");
+        bushVoice = Resources.Load<AudioClip>("Music/bush");
+
     }
     void Start()
     {
@@ -74,9 +80,10 @@ public class player : MonoBehaviour
         attack();//攻击
         Oink();//发出吼叫
         OinkTime();//记录间隔时间
+        ifisInvisible();
         //Debug.Log(blood);
         //Debug.Log("speed "+speed+"speed_a "+speed_a);
-        
+
     }
     void OinkTime()
     {
@@ -92,6 +99,31 @@ public class player : MonoBehaviour
         if(oinkTime>=0)
         {
             oinkTime -= Time.deltaTime;
+        }
+    }
+    void ifisInvisible()
+    {
+        if(!isInvisible && audioSource.clip != bushVoice)
+        {
+            audioSource.clip = bushVoice;
+            audioSource.Play();
+        }
+        else if(isInvisible && audioSource.clip == bushVoice)
+        {
+            audioSource.Stop();
+        }
+        if(audioSource.clip==walkVoice)
+        {
+            if(ator.GetBool("isRun"))
+            {
+                audioSource.pitch = 1;
+            }
+            else
+            {
+                audioSource.pitch = 0.7f;
+            }
+            audioSource.loop = true;
+            audioSource.volume = 0.7f;
         }
     }
     void Oink() //吼叫
@@ -110,7 +142,7 @@ public class player : MonoBehaviour
             oink.creat(scope,transform.position);
             oinkTime = 3f;
             isOink1 = true;
-            audioSource.Play();
+            
         }
         else if (Input.GetKeyDown(KeyCode.K) && isOink1 == true )
         {
@@ -119,6 +151,8 @@ public class player : MonoBehaviour
             oinkTime = 1f;
             isOink = true;
             isOink1 = false;
+            audioSource.clip = oinkVoice;
+            audioSource.Play();
         }
     }
     void FixedUpdate()
@@ -189,10 +223,21 @@ public class player : MonoBehaviour
         if(sped!=Vector3.zero)
         {
             isMove = true;
+            if(!audioSource.isPlaying)
+            {
+                audioSource.clip = walkVoice;
+                
+                audioSource.Play();
+            }
+            
         }
         else
         {
             isMove = false;
+            if(audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
         sped = sped.normalized;
         Vector3 sped_x = sped;

@@ -5,11 +5,12 @@ using UnityEngine;
 public class birdChange : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool visible = true;
+    //public bool visible = true;
     //GameObject head;
-    GameObject arm_fly;
-    GameObject arm_static;
+    public GameObject arm_fly;
+    public GameObject arm_static;
     private Animator animator;
+    public bool firstFly = false;
     void Awake()
     {
         //head = GameObject.Find("1_1/Enemy1/NPC01_Apose (1) Variant/NPC_01_head");
@@ -19,9 +20,11 @@ public class birdChange : MonoBehaviour
         //head = GameObject.Find("1_1/Enemy1/NPC01_Apose (1) Variant/NPC_01_head");
 
         //获取两种翅膀的组件和动画组件
-        arm_fly = GameObject.Find("");
-        arm_static = GameObject.Find("");
+        arm_fly = GameObject.Find("TimeLine_baige/Dove_Flying/Dove_wing2");
+        arm_static = GameObject.Find("TimeLine_baige/Dove_Flying/Dove_wing1");
         animator = this.GetComponent<Animator>();
+        arm_static.SetActive(false);
+        arm_fly.SetActive(true);
         //head.SetActive(visible);
     }
 
@@ -32,12 +35,16 @@ public class birdChange : MonoBehaviour
 
         //判断动画是否结束来设置两种翅膀的显示与隐藏
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        if (info.normalizedTime >= 1.0f)
+        Debug.Log(info.IsName("Fly"));
+        if (info.normalizedTime > 0.99f && info.IsName("Fly"))
         {
+
+            //if(firstFly==false)
+            //firstFly = !firstFly;
             arm_static.SetActive(true);
             arm_fly.SetActive(false);
         }
-        else
+        else if (info.normalizedTime <= 0.99f && info.IsName("Fly"))
         {
             arm_static.SetActive(false);
             arm_fly.SetActive(true);

@@ -19,16 +19,18 @@ public class Fly : MonoBehaviour
     void Update()
     {
         float step = speed * Time.deltaTime;
-        gameObject.transform.localPosition = Vector3.MoveTowards(transform.localPosition, point.transform.position, step);
+        gameObject.transform.position = Vector3.MoveTowards(transform.position, point.transform.position, step);
         Vector3 p= point.transform.position - transform.position;
         p.y = 0;
         transform.forward = p; 
+        
         if(point == TheLastPoint && Vector3.Distance(transform.position,TheLastPoint.transform.position)<0.8f)
         {
             ator.SetBool("isFly", false);
             ator.SetBool("isLand", true);
             AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
             // 判断动画是否播放完成
+            //Debug.Log(info.IsName("Land"));
             if ((info.normalizedTime > 0.99f) && (info.IsName("Land")))
             {
                 ator.SetBool("isLand", false);

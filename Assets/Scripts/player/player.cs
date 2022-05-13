@@ -268,7 +268,7 @@ public class player : MonoBehaviour
             {
                 if(audioSource.clip!= boxVoice)
                 {
-                    Debug.Log(33333);
+                    //Debug.Log(33333);
                     audioSource.clip = boxVoice;
                     audioSource.Play();
                 }

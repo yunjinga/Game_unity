@@ -107,13 +107,26 @@ public class Dove : MonoBehaviour
     public RectTransform rectTransform;
     int num_texture = 0;
     bool isAll = false;
+
+    public GameObject tishi;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        transform.GetComponent<Fly>().enabled = false;
+    }
     void Start()
     {
-        texture_1_1 = GameObject.Find("texture1_1");
-        texture_1_2 = GameObject.Find("texture1_2");
-        texture_1_1.SetActive(false);
-        texture_1_2.SetActive(false);
+        //texture_1_1 = GameObject.Find("texture1_1");
+        //texture_1_2 = GameObject.Find("texture1_2");
+        if(texture_1_1)
+        {
+            texture_1_1.SetActive(false);
+        }
+        if(texture_1_2)
+        {
+            texture_1_2.SetActive(false);
+        }
+       
         if (File.Exists(localPath))
         {
             xml = new XmlDocument();
@@ -130,15 +143,25 @@ public class Dove : MonoBehaviour
             }
         }
         duihua.SetActive(false);
+        tishi.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(now);
+        //Debug.Log(now);
+        
         if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && now < num - 1)
+            if(now==1)
+            {
+                tishi.SetActive(true);
+            }
+            else if(now!=1)
+            {
+                tishi.SetActive(false);
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && now < num - 1 )
             {
                 duihua.SetActive(true);
                 gudin();
@@ -146,7 +169,7 @@ public class Dove : MonoBehaviour
                 Debug.Log(s[now]);
                 text.text = s[now++];
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && now == num - 1 && !isAll)
+            else if (Input.GetKeyDown(KeyCode.Space) && now == num - 1  && !isAll)
             {
                 //Debug.Log(111111);
                 num_texture++;
@@ -178,28 +201,24 @@ public class Dove : MonoBehaviour
                         isAll = true;
                     }
                 }
-                else if(level != "L1" && num_texture== 1)
+                else if(level != "L1")
                 {
                     duihua.SetActive(true);
                     text.text = s[now];
                 }
-                else if(level != "L1" && num_texture == 2)
-                {
-                    duihua.SetActive(false);
-                    isAll = true;
-                }
+         
                 
             }
-            else if (isAll && Input.GetKeyDown(KeyCode.Space) && !duihua.activeInHierarchy)
+            if(isAll)
             {
-                //Debug.Log(111111);
-                duihua.SetActive(true);
-
+                transform.GetComponent<Fly>().enabled = true;
             }
-            else if (isAll && Input.GetKeyDown(KeyCode.Space) && duihua.activeInHierarchy)
-            {
-                duihua.SetActive(false);
-            }
+        }
+        else if (Vector3.Distance(transform.position, player.transform.position) > 3f)
+        {
+            //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
+            duihua.SetActive(false);
+            tishi.SetActive(false);
         }
     }
     void gudin()

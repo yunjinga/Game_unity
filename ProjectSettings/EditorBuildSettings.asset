@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/DJC/DJC_Moring.unity
     guid: c1024285bd45f3340a4035eadb75f621
-  - enabled: 1
+  - enabled: 0
     path: Assets/DJC/Level_0_Newlevel.unity
     guid: dd7035adebde18247bb02d390a423d7a
+  - enabled: 1
+    path: Assets/DJC/Level_0_Newlevel_2.unity
+    guid: 84ad3ff6d39d55445a232d9f51d17bfe
   - enabled: 1
     path: Assets/DJC/Level_1_DJC.unity
     guid: f147a58f07383ca4fa486b6a06e85d14

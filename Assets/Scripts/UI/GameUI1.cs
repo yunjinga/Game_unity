@@ -46,9 +46,15 @@ public class GameUI1 : MonoBehaviour
     public GameObject[] canvas_enemy;
     public bool ishei = false;
     public bool iswhite = false;
+    public Image black;
+    float A = 255;
+    public AudioSource source;
+    public AudioClip clip;
+    int num = 0;
     ///public AudioSource audio_jixv;
     void Start()
     {
+        source.Stop();
         PlayerPrefs.SetInt("isMoveCamera", 0);
         PlayerPrefs.SetInt("level", 0);
         //Camera.main.GetComponent<screenChange>().SetBlackBool = true;
@@ -58,7 +64,7 @@ public class GameUI1 : MonoBehaviour
         button_stop.GetComponent<Button>().onClick.AddListener(Onclick1);
         button_jixv.SetActive(false);
         button_jixv.GetComponent<Button>().onClick.AddListener(OnClick2);
-        
+        source = GetComponent<AudioSource>();
         //button_kaishi.GetComponent<Button>().onClick.AddListener(start1);
         //image_wupin.SetActive(false);
         //wupin_two.SetActive(false);
@@ -74,24 +80,20 @@ public class GameUI1 : MonoBehaviour
         //Anim_fly.SetActive(false);
         //float step = speed * Time.deltaTime;
         gaming.SetActive(true);
+
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
-        /*if (eat)
+        A -= Time.deltaTime * 150;
+        black.GetComponent<Image>().color = new Color(0, 0, 0, A);
+        if (A == 0)
         {
-            if (wupin[0].activeInHierarchy == false)
-            {
-                image_wupin.SetActive(true);
-                Invoke("m1", 5.0f);
-
-                eat = false;
-            }
+            black.enabled = false;
         }
-        if (zhongdian.end)
+        /*if (zhongdian.end)
         {
             shengli.SetActive(true);
             Time.timeScale = 0;
@@ -99,9 +101,11 @@ public class GameUI1 : MonoBehaviour
         }*/
         if (player.transform.gameObject.GetComponent<player_blood>().blood == 0)
         {
+            num++;
             shibai.SetActive(true);
             image_zantin.SetActive(false);
             gaming.SetActive(false);
+            if(num==1)source.PlayOneShot(clip);
             Time.timeScale = 0;
             for (int i = 0; i < canvas_enemy.Length; i++)
             {

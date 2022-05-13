@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ST : MonoBehaviour
 {
-    public GameObject start;
-    bool isdown = false;
-    float wait = 0;
+    //public GameObject start;
+    //bool isdown = false;
+    //float wait = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -17,22 +17,24 @@ public class ST : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isdown == true)
-        {
-            start.SetActive(false);
-            wait += Time.deltaTime;
-            Camera.main.GetComponent<screenChange>().SetBlackBool = true;
-            if (wait > 5)
-            {
-                Application.LoadLevel(1);
-            }
-        }
+        //if (isdown == true)
+        //{
+        //    //start.SetActive(false);
+        //    //wait += Time.deltaTime;
+        //    //Camera.main.GetComponent<screenChange>().SetBlackBool = true;
+        //    //if (wait > 5)
+        //    //{
+        //    //    
+        //    //}
+        //}
     }
     public void start1()//开始按键的功能
     {
-        isdown = true;
-        
-       
+        //isdown = true;
+        Application.LoadLevel(1);
+        int i = PlayerPrefs.GetInt("guanqia");
+        PlayerPrefs.SetInt("l", i);
+
     }
     public void Quit()
     {

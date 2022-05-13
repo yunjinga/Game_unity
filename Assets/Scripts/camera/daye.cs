@@ -21,20 +21,22 @@ public class daye : MonoBehaviour
     public GameObject player;
     public GameObject tishi;
     int num = 0;
+    public AudioSource source;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         tishi.SetActive(false);
         player = GameObject.Find("Player");
         duihua_one.SetActive(false);
         duihua_two.SetActive(false);
         cineVirtual = GameObject.Find("CM vcam1").gameObject.GetComponent<CinemachineVirtualCamera>();
-
+        source.Stop();
     }
     private void Update()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(NPC.transform.position);
-       
-        if (Input.GetKeyDown(KeyCode.Space)&&isTrigger==true)
+
+        if (Input.GetKeyDown(KeyCode.Space) && isTrigger == true)
         {
             num++;
         }
@@ -43,7 +45,8 @@ public class daye : MonoBehaviour
             case 1:
                 {
                     duihua_one.SetActive(true);
-                    duihua_one.transform.position=screenPos + new Vector3(40, 400, 0);
+                    source.Play();
+                    duihua_one.transform.position = screenPos + new Vector3(40, 400, 0);
                     break;
                 }
             case 2:
@@ -59,7 +62,7 @@ public class daye : MonoBehaviour
                     isTrigger = false;
                     break;
                 }
-        
+
         }
         var cineBody = (CinemachineFramingTransposer)cineVirtual.GetCinemachineComponent(CinemachineCore.Stage.Body);
         //next_duihua();
@@ -75,7 +78,7 @@ public class daye : MonoBehaviour
 
 
         }
-        if (isTrigger == false&&isstart==true)
+        if (isTrigger == false && isstart == true)
         {
             if (cineBody.m_CameraDistance < 4f)
             {
@@ -95,8 +98,8 @@ public class daye : MonoBehaviour
             //Debug.Log(cishu);
             tishi.SetActive(true);
             isTrigger = true;
-           
-           
+
+
             //player.gameObject.GetComponent<player>().enabled = false;
         }
 
@@ -119,3 +122,5 @@ public class daye : MonoBehaviour
         }
     }
 }
+
+

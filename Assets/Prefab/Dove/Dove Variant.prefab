@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fd2a6b8d0f587b6418de28231a2db529, type: 2}
     - target: {fileID: 919132149155446097, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
       propertyPath: m_Name
-      value: Dove
+      value: Dove Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
@@ -74,7 +74,51 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
   m_PrefabInstance: {fileID: 4902348691586212764}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &224498122
+--- !u!1 &3878715786257331108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1019129234598555592, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+  m_PrefabInstance: {fileID: 4902348691586212764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2583827796209117753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1741980900724586075, guid: 2d0a9e37c9ce10b4f8afea004bb4d4ee, type: 3}
+  m_PrefabInstance: {fileID: 4902348691586212764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5113729084969229668
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244949708821356237}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb186ce50085e5743954bd329b7a6c44, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4613523781274434737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244949708821356237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72aff068175c314f960c715adfd0f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: {fileID: 0}
+  TheLastPoint: {fileID: 0}
+  speed: 3
+--- !u!114 &6196266933662931309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,10 +130,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195e3e3ac9aab294fa8bf9dd9b695332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: L1
+  level: L3
   player: {fileID: 0}
   duihua: {fileID: 0}
   text: {fileID: 0}
   texture_1_1: {fileID: 0}
   texture_1_2: {fileID: 0}
   rectTransform: {fileID: 0}
+--- !u!114 &6417010460625236409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5244949708821356237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea60cdb26d2d724db4cfc331a11052c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arm_fly: {fileID: 2583827796209117753}
+  arm_static: {fileID: 3878715786257331108}
+  firstFly: 0

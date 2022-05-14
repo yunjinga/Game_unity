@@ -108,7 +108,7 @@ Material:
     - _nearlinewidth: 0.01
     - _shadowoffest: 0.46
     - _shadowpower: 0
-    - _shadowsoftness: 1
+    - _shadowsoftness: 0.28
     m_Colors:
     - _ASEOutlineColor: {r: 0.7843138, g: 0.4431373, b: 0.4666667, a: 1}
     - _AlbedoTint: {r: 1, g: 0.6410309, b: 0.5801887, a: 0}

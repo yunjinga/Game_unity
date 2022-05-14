@@ -15,7 +15,7 @@ public class caidi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        texture = GameObject.Find("texture3_1");
+        //texture = GameObject.Find("texture3_1");
        // duihua = GameObject.Find("baige");
         texture.SetActive(false);
         duihua.SetActive(false);
@@ -64,5 +64,7 @@ public class caidi : MonoBehaviour
     {
         num = 0;
         isT = false;
+        texture.SetActive(false);
+        duihua.SetActive(false);
     }
 }

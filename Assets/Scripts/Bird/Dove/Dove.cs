@@ -86,12 +86,13 @@ using System.IO;
 using System.Xml;
 using UnityEngine.UI;
 using System;
-
+using Cinemachine;
 
 public class Dove : MonoBehaviour
 {
      float xOffset =0;
      float yOffset = -40;
+    public CinemachineVirtualCamera cvam;
     public string level;
     public GameObject player;
     public GameObject duihua;
@@ -112,13 +113,15 @@ public class Dove : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        //texture_1_1=GameObject.Find("")
         transform.GetComponent<Fly>().enabled = false;
     }
     void Start()
     {
+        cvam = GameObject.Find("CM vcam1").gameObject.GetComponent<CinemachineVirtualCamera>();
         //texture_1_1 = GameObject.Find("texture1_1");
         //texture_1_2 = GameObject.Find("texture1_2");
-        if(texture_1_1)
+        if (texture_1_1)
         {
             texture_1_1.SetActive(false);
         }
@@ -165,6 +168,7 @@ public class Dove : MonoBehaviour
             {
                 duihua.SetActive(true);
                 gudin();
+                
                 //text的值等于s[num++]
                 Debug.Log(s[now]);
                 text.text = s[now++];
@@ -180,6 +184,7 @@ public class Dove : MonoBehaviour
                     {
                         texture_1_1.SetActive(true);
                         duihua.SetActive(false);
+
                     }
 
                     if (num_texture == 2)
@@ -203,8 +208,35 @@ public class Dove : MonoBehaviour
                 }
                 else if(level != "L1")
                 {
-                    duihua.SetActive(true);
-                    text.text = s[now];
+                    if (level == "L5")
+                    {
+                        if (num_texture == 1)
+                        {
+                           
+                                cvam.m_Lens.FieldOfView = 30;
+                            texture_1_1.SetActive(true);
+                            duihua.SetActive(false);
+                        }
+                        if (num_texture == 2)
+                        {
+                            texture_1_1.SetActive(false);
+                            texture_1_2.SetActive(false);
+                            duihua.SetActive(true);
+                            text.text = s[now]; cvam.m_Lens.FieldOfView = 50;
+                        }
+                        if (num_texture == 3)
+                        {
+                            duihua.SetActive(false);
+                            isAll = true;
+                           
+                        }
+                    }
+                    else
+                    {
+                        duihua.SetActive(true);
+                        text.text = s[now];
+                    }
+                    
                 }
          
                 

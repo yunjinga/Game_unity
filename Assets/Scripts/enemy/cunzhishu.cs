@@ -5,40 +5,43 @@ using UnityEngine;
 public class cunzhishu : MonoBehaviour
 {
     Animator ator;
-    enemy[] enemies;
-    enemy1[] enemies1;
-    enemy2[] enemies2;
+    GameObject parent;
+    List<GameObject> l1 = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        enemies = GameObject.FindObjectsOfType<enemy>();
-        enemies1 = GameObject.FindObjectsOfType<enemy1>();
-        enemies2 = GameObject.FindObjectsOfType<enemy2>();
         ator = transform.GetComponent<Animator>();
+        parent = transform.parent.gameObject;
+        foreach (Transform item in parent.GetComponentsInChildren<Transform>())
+        {
+            if (!item.GetComponent<cunzhishu>())
+            {
+                l1.Add(item.gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0); 
-        
+        AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
+
         if ((info.IsName("push")))
         {
-            //Debug.Log(1111);
-            for (int i = 0; i < enemies.Length; i++)
+            foreach (GameObject item in l1)
             {
-                //enemies[i].waring = enemy.midleWaring;
-                enemies[i].waring = 20;
-            }
-            for (int i = 0; i < enemies1.Length; i++)
-            {
-                //enemies1[i].waring = enemy.midleWaring;
-                enemies1[i].waring = 20;
-            }
-            for (int i = 0; i < enemies2.Length; i++)
-            {
-                //enemies2[i].waring = enemy.midleWaring;
-                enemies2[i].waring = 20;
+                if(item.GetComponent<enemy>())
+                {
+                    item.GetComponent<enemy>().waring = 20;
+                }
+                else if (item.GetComponent<enemy1>())
+                {
+                    item.GetComponent<enemy1>().waring = 20;
+                }
+                else if (item.GetComponent<enemy2>())
+                {
+                    item.GetComponent<enemy2>().waring = 20;
+                }
             }
         }
     }

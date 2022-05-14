@@ -97,11 +97,15 @@ public class GameUI1 : MonoBehaviour
             black.enabled = false;
         }
         /*if (zhongdian.end)
-        {
+        {m
             shengli.SetActive(true);
             Time.timeScale = 0;
             zhongdian.end = false;
         }*/
+        if (player.transform.gameObject.GetComponent<player_blood>().blood == 1 && num != 1)
+        {
+            source.Stop();
+        }
         if (player.transform.gameObject.GetComponent<player_blood>().blood == 0)
         {
             num++;

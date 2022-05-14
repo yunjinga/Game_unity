@@ -46,5 +46,7 @@ public class level4_1 : MonoBehaviour
     {
         isdown = false;
         texture.SetActive(false);
+        tishi.SetActive(false);
     }
+
 }

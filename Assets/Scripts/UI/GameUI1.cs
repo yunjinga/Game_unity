@@ -51,6 +51,9 @@ public class GameUI1 : MonoBehaviour
     public AudioSource source;
     public AudioClip clip;
     int num = 0;
+    public GameObject tishi;
+    float wait_zhiyin = 0;
+    bool zhiyin = false;
     ///public AudioSource audio_jixv;
     void Start()
     {
@@ -117,6 +120,20 @@ public class GameUI1 : MonoBehaviour
             wait += Time.deltaTime;
             //Debug.Log(wait);
         }
+        if (zhiyin)
+        {
+            
+            wait_zhiyin +=Time.deltaTime;
+            if (wait_zhiyin >= 5)
+            {
+                tishi.SetActive(false);
+                zhiyin = false;
+            }
+            else
+            {
+                tishi.SetActive(true);
+            }
+        }
         //if (!ishei)
         //{
         //    Camera.main.GetComponent<screenChange>().SetBlackBool = true;
@@ -140,9 +157,11 @@ public class GameUI1 : MonoBehaviour
     {
         image_wupin.SetActive(false);
     }
-    private void zhiyin()
+    public  void zhiyin11()
     {
-        //tishi.SetActive(false);
+        wait_zhiyin = 0;
+       // tishi.SetActive(true);
+        zhiyin = true;
     }
     /*public void UpdateHPShow(int CurHp)
     {

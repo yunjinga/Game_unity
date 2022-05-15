@@ -42,7 +42,7 @@ public class child6_2 : MonoBehaviour
     void Update()
     {
 
-        if (Vector3.Distance(transform.position, player.transform.position) < 3f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
         {
             tishi.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space) )

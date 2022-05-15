@@ -73,14 +73,14 @@ public class camera6_1 : MonoBehaviour
             {
                 nums++;
             }
-            if (nums == 0)
-            {
-                if (wait >= 5)
-                {
-                    tishi.SetActive(false);
-                }
-            }
-            if (nums == 1)
+            //if (nums == 0)
+            //{
+                //if (wait >= 5)
+                //{
+                //    tishi.SetActive(false);
+                //}
+            //}
+            if (nums%2 == 1)
             {
                 wait_down += Time.deltaTime;
                 if (wait_down > 2)
@@ -130,7 +130,7 @@ public class camera6_1 : MonoBehaviour
                 //text.text = "金豚房产：目前有多地正在施工，期待我们的美好家园！";
 
             }
-            if (nums == 2)
+            if (nums %2== 0)
             {
                 if (level == 2)
                     {
@@ -142,7 +142,7 @@ public class camera6_1 : MonoBehaviour
                 //canvas.SetActive(true);
                 duihua.SetActive(false);
                 duihua_1.SetActive(false);
-                tishi.SetActive(false);
+                //tishi.SetActive(false);
             }
             //if (nums == 3)
             //{

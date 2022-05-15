@@ -28,11 +28,21 @@ public class jingjie2 : MonoBehaviour
             jingjie_1.gameObject.SetActive(true);
             jingjie_1.transform.position = screenPos;
         }
-        if (transform.GetComponent<enemy1>().waring > 20&&isShow==true)
+        else
+        {
+            jingjie_1.gameObject.SetActive(false);
+            jingjie_2.gameObject.SetActive(false);
+        }
+        if (transform.GetComponent<enemy1>().waring > 20&&isShow== true&&transform.GetComponent<enemy1>().waring <40)
         {
             jingjie_1.gameObject.SetActive(false);
             jingjie_2.gameObject.SetActive(true);
             jingjie_2.transform.position = screenPos;
+        }
+        else
+        {
+            jingjie_1.gameObject.SetActive(false);
+            jingjie_2.gameObject.SetActive(false);
         }
         //if (transform.GetComponent<enemy1>().waring == 0)
         //{

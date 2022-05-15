@@ -10,7 +10,7 @@ public class position : MonoBehaviour
     public GameObject start4;
     public GameObject start5;
     public GameObject start6;
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class position : MonoBehaviour
         start3 = GameObject.Find("Start3");
         start4 = GameObject.Find("start4");
         start5 = GameObject.Find("start5");
-        start6 = GameObject.Find("start6"); 
+        start6 = GameObject.Find("start6");
         int i = PlayerPrefs.GetInt("l");
         switch (i)
         {
@@ -58,9 +58,51 @@ public class position : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.KeypadPlus))
+        if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
-            PlayerPrefs.SetInt("l", PlayerPrefs.GetInt("l") + 1);
+            if (PlayerPrefs.GetInt("l") < 5)
+            {
+                PlayerPrefs.SetInt("l", PlayerPrefs.GetInt("l") + 1);
+                int i = PlayerPrefs.GetInt("l");
+                switch (i)
+                {
+                    case 0:
+                        {
+                            transform.position = start1.transform.position;
+                            break;
+                        }
+                    case 1:
+                        {
+                            transform.position = start2.transform.position;
+                            break;
+                        }
+                    case 2:
+                        {
+                            transform.position = start3.transform.position;
+                            break;
+                        }
+                    case 3:
+                        {
+                            transform.position = start4.transform.position;
+                            break;
+                        }
+                    case 4:
+                        {
+                            transform.position = start5.transform.position;
+                            break;
+                        }
+                    case 5:
+                        {
+                            transform.position = start6.transform.position;
+                            break;
+                        }
+                }
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+        {
+            PlayerPrefs.SetInt("l", 0);
             int i = PlayerPrefs.GetInt("l");
             switch (i)
             {
@@ -95,6 +137,48 @@ public class position : MonoBehaviour
                         break;
                     }
             }
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        {
+            if (PlayerPrefs.GetInt("l") > 0)
+            {
+                PlayerPrefs.SetInt("l", PlayerPrefs.GetInt("l") - 1);
+                int i = PlayerPrefs.GetInt("l");
+                switch (i)
+                {
+                    case 0:
+                        {
+                            transform.position = start1.transform.position;
+                            break;
+                        }
+                    case 1:
+                        {
+                            transform.position = start2.transform.position;
+                            break;
+                        }
+                    case 2:
+                        {
+                            transform.position = start3.transform.position;
+                            break;
+                        }
+                    case 3:
+                        {
+                            transform.position = start4.transform.position;
+                            break;
+                        }
+                    case 4:
+                        {
+                            transform.position = start5.transform.position;
+                            break;
+                        }
+                    case 5:
+                        {
+                            transform.position = start6.transform.position;
+                            break;
+                        }
+                }
+            }
+
         }
     }
 

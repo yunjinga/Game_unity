@@ -285,7 +285,7 @@ public class enemy2 : MonoBehaviour
         float distance_attack = Vector3.Distance(goal.position, transform.position);
         attackSpeed.changeSpeed(ator);
         //Debug.Log(distance_attack);
-        if (distance_attack <= 0.8f && PursuitTime >= 0)
+        if (distance_attack <= 0.8f && PursuitTime > 0 )
         {
             Vector3 dir = goal.position - transform.position;
             dir.y = 0;
@@ -509,8 +509,9 @@ public class enemy2 : MonoBehaviour
     void getBreathe()
     {
         float distance_player = Vector3.Distance(goal.position, transform.position);
-        if (distance_player <= distance)
+        if (distance_player <= distance && goal.GetComponent<player>().isInvisible)
         {
+            Debug.Log(distance + " " + goal.GetComponent<player>().isInvisible);
             //Debug.Log(distance);
             waring = maxWaring;
             waringTime = 2;

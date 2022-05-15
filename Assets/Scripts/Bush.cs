@@ -23,7 +23,7 @@ public class Bush : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.transform.GetComponent<player>())
         {

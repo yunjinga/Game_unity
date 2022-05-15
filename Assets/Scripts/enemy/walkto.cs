@@ -106,7 +106,7 @@ public class walkto : MonoBehaviour
     public void walk()
     {
         ator.SetBool("isWalk", true);
-        agent.enabled = true;
+       
         agent.destination = position;
         
     }

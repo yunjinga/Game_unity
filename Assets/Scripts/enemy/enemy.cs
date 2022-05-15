@@ -330,7 +330,7 @@ public class enemy : MonoBehaviour
         float distance_attack = Vector3.Distance(goal.position, transform.position);
         attackSpeed.changeSpeed(ator);
         //Debug.Log(distance_attack);
-        if (distance_attack <= 0.8f && PursuitTime >= 0)
+        if (distance_attack <= 0.8f && PursuitTime > 0 )
         {
             Vector3 dir = goal.position - transform.position;
             dir.y = 0;
@@ -386,12 +386,10 @@ public class enemy : MonoBehaviour
         {
             agent.speed = 0f;
         }
-        if(!ator.GetBool("isRun") && !ator.GetBool("isWalk") && !ator.GetBool("isAttack"))
-        {
-            agent.enabled = false;
-        }
+        
         
     }
+   
     void DrawFieldOfView()
     {
 
@@ -523,7 +521,7 @@ public class enemy : MonoBehaviour
     }
     void runToPlayer()//目标设置为玩家
     {
-        agent.enabled = true;
+       
         agent.destination = goal.position;
         ator.SetBool("isRun", true);
         isCatching = true;
@@ -532,7 +530,7 @@ public class enemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, begin) > 0.3f && !transform.GetComponent<walkto>().isWalkto)
         {
-            agent.enabled = true;
+           
             agent.destination = begin;
             ator.SetBool("isRun", false);
             ator.SetBool("isWalk", true);
@@ -570,9 +568,9 @@ public class enemy : MonoBehaviour
     void getBreathe()
     {
         float distance_player = Vector3.Distance(goal.position, transform.position);
-        if (distance_player <= distance)
+        if (distance_player <= distance && goal.GetComponent<player>().isInvisible)
         {
-            //Debug.Log(distance);
+            Debug.Log(distance +" "+ goal.GetComponent<player>().isInvisible);
             waring = maxWaring;
             waringTime = 2;
         }
@@ -615,7 +613,7 @@ public class enemy : MonoBehaviour
         }
         if (isWalkToOink && !isLook)
         {
-            agent.enabled = true;
+          
             agent.destination = v1;
             //Debug.Log(v1);
             ator.SetBool("isWalk", true);

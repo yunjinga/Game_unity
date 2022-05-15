@@ -287,7 +287,7 @@ public class enemy1 : MonoBehaviour
         float distance_attack = Vector3.Distance(goal.position, transform.position);
         attackSpeed.changeSpeed(ator);
         //Debug.Log(distance_attack);
-        if (distance_attack <= 0.8f && PursuitTime >= 0)
+        if (distance_attack <= 0.8f && PursuitTime > 0 )
         {
             Vector3 dir = goal.position - transform.position;
             dir.y = 0;
@@ -302,7 +302,7 @@ public class enemy1 : MonoBehaviour
         }
         else if (info.IsName("push"))
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, goal.transform.localPosition, 3 * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, goal.transform.localPosition, 2 * Time.deltaTime);
         }
     }
     void Rotate()//如果到达初始地点则恢复原本的面朝方向
@@ -502,8 +502,9 @@ public class enemy1 : MonoBehaviour
     void getBreathe()
     {
         float distance_player = Vector3.Distance(goal.position, transform.position);
-        if (distance_player <= distance)
+        if (distance_player <= distance && goal.GetComponent<player>().isInvisible)
         {
+            Debug.Log(distance + " " + goal.GetComponent<player>().isInvisible);
             //Debug.Log(distance);
             waring = maxWaring;
             waringTime = 2;

@@ -8,22 +8,22 @@ using UnityEngine.UI;
 
 public class enemy : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
     public float xOffset;
     public float yOffset;
     public GameObject biaoqing_1;
     public GameObject biaoqing_2;
     //新加的x,y
-    float x_offset=0;
-    float y_offset=300;
+    float x_offset = 0;
+    float y_offset = 300;
     //public RectTransform rectTransform;
     //public RectTransform rectTransform_one;
     //public RectTransform rectTransform_two;
     public Transform goal;
-    public float viewRadius = 3f, viewRadius_normal=3f, viewRadius_waring=5f;// 代表视野最远的距离和警戒后的距离
+    public float viewRadius = 3f, viewRadius_normal = 3f, viewRadius_waring = 5f;// 代表视野最远的距离和警戒后的距离
     public float viewRugle = 45, viewRugle_normal = 45, viewRugle_waring = 60;//射线角度
-    public float viewAngleStep = 30f, normal_step = 30f, waring_step=45f; //射线数量和警戒后的射线数量
+    public float viewAngleStep = 30f, normal_step = 30f, waring_step = 45f; //射线数量和警戒后的射线数量
     public float PursuitTime = 0f; //追击时间
     public Vector3 begin;//开始时的位置
 
@@ -37,14 +37,14 @@ public class enemy : MonoBehaviour
     public float maxWaring = 40f, midleWaring = 20f;
     //lxy
 
-    public bool isCatching,isOink=false;//是否在追player
-    public bool isWalkToOink = false,isLook=false,isWalkToBegin=false;
+    public bool isCatching, isOink = false;//是否在追player
+    public bool isWalkToOink = false, isLook = false, isWalkToBegin = false;
     public float LookTime = 0f;
     public float waringTime = 0f;//寻敌时间
     public float stayTime = 3f;//待在声音点位置时间
     private Vector3 beginrotation;//初始旋转值
     private Mesh mesh;//mesh
-    public float distance_normal=0.2f,distance_waring=0.4f,distance;//警戒前后获得气息值的范围
+    public float distance_normal = 0.2f, distance_waring = 0.4f, distance;//警戒前后获得气息值的范围
     private Vector3[] vertices;//mesh的vertices
     public Vector3 v1;
     int[] tringles;//mesh的tringles
@@ -58,7 +58,7 @@ public class enemy : MonoBehaviour
     public BoxCollider bx;
     public Vector3 oinkPostion;
     NavMeshAgent agent;
-    bool iszhuizhu=true;
+    bool iszhuizhu = true;
     //新加的四个变量
     //public Slider jingjie;
     //public Slider jingjiehong;
@@ -72,29 +72,29 @@ public class enemy : MonoBehaviour
     private float m_CurTimeCount;
     private float m_doubleLoopTime;
     private Transform m_LookAtTarget;
-    
+
     [Header("环绕注视", order = 1)]
     public float m_MinAngle;
-    
+
     [Tooltip("注视最大角度")]
     public float m_MaxAngle;
-    
+
     [Range(1f, 30f)]
     [Tooltip("[注视]注视环绕一周的时间秒")]
     public float m_LoopTime;  //循环一周时间
-    
+
     [Range(0f, 5f)]
     [Tooltip("[注视]注视高度，相对人物坐标")]
     public float m_Hight;
-    
+
     [Range(0f, 5f)]
     [Tooltip("[注视]注视点距离人物距离")]
     public float m_Distance;
-    
+
 
     #endregion
-    
-    
+
+
     //lxy
     public Material material;
 
@@ -123,7 +123,7 @@ public class enemy : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
         mesh.name = "mesh";
         //LookAtInit();
-        
+
         agent = GetComponent<NavMeshAgent>();
 
         begin = transform.position;
@@ -135,7 +135,7 @@ public class enemy : MonoBehaviour
 
         bx.enabled = false;
         oinkPostion = Vector3.zero;
-        
+
         v1 = Vector3.zero;
         //新加的初始显示绿到黄
         //if (waring <= midleWaring)
@@ -146,7 +146,7 @@ public class enemy : MonoBehaviour
         Trigger = GameObject.Find("Start2").gameObject;
         Trigger_1 = GameObject.Find("Start3").gameObject;
     }
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -157,7 +157,7 @@ public class enemy : MonoBehaviour
         Attack();
         staytime();
         setSpeed();
-        if(!ator.GetBool("isAttack") && !ator.GetBool("isRun"))
+        if (!ator.GetBool("isAttack") && !ator.GetBool("isRun"))
         {
             walktoOink();
             //rectTransform_one.gameObject.SetActive(false);
@@ -171,7 +171,7 @@ public class enemy : MonoBehaviour
         {
             Trigger.SetActive(false);
             Trigger_1.SetActive(false);
-           wait_biaoqing += Time.deltaTime;
+            wait_biaoqing += Time.deltaTime;
             if (wait_biaoqing < 3)
             {
                 biaoqing_1.SetActive(false);
@@ -190,7 +190,7 @@ public class enemy : MonoBehaviour
     void isWalk()
     {
         AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
-        if(info.IsName("run"))
+        if (info.IsName("run"))
         {
             if (!music.isPlaying)
             {
@@ -200,7 +200,7 @@ public class enemy : MonoBehaviour
                 music.loop = true;
             }
         }
-        else if(info.IsName("walk"))
+        else if (info.IsName("walk"))
         {
             if (!music.isPlaying)
             {
@@ -250,7 +250,7 @@ public class enemy : MonoBehaviour
     //       // warn.gameObject.SetActive(false);
     //        jingjie.gameObject.SetActive(false);
     //        jingjiehong.gameObject.transform.position = player2DPosition + new Vector2(x_offset, y_offset);
-            
+
     //        if (isview==false)//player2DPosition.x > Screen.width || player2DPosition.x < 0 || player2DPosition.y > Screen.height || player2DPosition.y < 0)
     //        {
     //            jingjiehong.gameObject.SetActive(false);
@@ -278,34 +278,34 @@ public class enemy : MonoBehaviour
         //LooKTargetAutogiRation();
     }
 
-    
+
     void staytime()//检测是否已经到达了声音地点
     {
-        if(Vector3.Distance(transform.position,oinkPostion)<0.1f && isOink)
+        if (Vector3.Distance(transform.position, oinkPostion) < 0.1f && isOink)
         {
             if (stayTime > 0)
             {
                 stayTime -= Time.deltaTime;
             }
-            else if(stayTime<=0)
+            else if (stayTime <= 0)
             {
                 stayTime = 0;
                 isOink = false;
                 PursuitTime = 0f;
             }
         }
-        
+
     }
     void IsWaring()//判断是否进入警戒状态
     {
-        if(ator.GetBool("isLook")||ator.GetBool("isRun"))
+        if (ator.GetBool("isLook") || ator.GetBool("isRun"))
         {
             viewRugle = viewRugle_waring;//切换成警戒角度
             viewAngleStep = waring_step;//射线数量
             viewRadius = viewRadius_waring;//警戒射线距离
             distance = distance_waring;
         }
-        else if(!ator.GetBool("isLook")&&!ator.GetBool("isRun"))
+        else if (!ator.GetBool("isLook") && !ator.GetBool("isRun"))
         {
             viewRugle = viewRugle_normal;//切换成正常角度
             viewAngleStep = normal_step;//正常射线数量
@@ -321,33 +321,39 @@ public class enemy : MonoBehaviour
     {
         bx.enabled = false;
     }
-   
+
     void Attack()//攻击函数
     {
         float distance_attack = Vector3.Distance(goal.position, transform.position);
         attackSpeed.changeSpeed(ator);
         //Debug.Log(distance_attack);
-        if (distance_attack<=0.8f && PursuitTime>=0)
+        if (distance_attack <= 0.8f && PursuitTime >= 0)
         {
             Vector3 dir = goal.position - transform.position;
             dir.y = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.3f);
             ator.SetBool("isAttack", true);
         }
+        /*
+        if (transform.GetComponent<cunzhishu>())
+        {
+            Debug.Log
+            }*/
         AnimatorStateInfo info = ator.GetCurrentAnimatorStateInfo(0);
         // 判断动画是否播放完成
-        if ((info.normalizedTime > 0.92f) && (info.IsName("push"))&& distance_attack>1)
+        if ((info.normalizedTime > 0.90f) && (info.IsName("getup")) && distance_attack > 0.8f)
         {
+
             ator.SetBool("isAttack", false);
         }
-        else if(info.IsName("push") && !transform.GetComponent<cunzhishu>())
+        else if (info.IsName("push") && !transform.GetComponent<cunzhishu>())
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, goal.transform.localPosition, 2 * Time.deltaTime);
         }
     }
     void Rotate() //如果到达初始地点则恢复原本的面朝方向
     {
-        if (Vector3.Distance(transform.position,begin)<0.1f && Vector3.Distance(transform.localEulerAngles, beginrotation) >0.1f && !transform.GetComponent<walkto>().isWalkto)  //获得的数据为一位小数，但实际可能为好几位小数所以加个范围
+        if (Vector3.Distance(transform.position, begin) < 0.1f && Vector3.Distance(transform.localEulerAngles, beginrotation) > 0.1f && !transform.GetComponent<walkto>().isWalkto)  //获得的数据为一位小数，但实际可能为好几位小数所以加个范围
         {
             //Debug.Log(1111);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetPoint, 3 * Time.deltaTime);//平滑转向
@@ -357,19 +363,20 @@ public class enemy : MonoBehaviour
     void setSpeed()//根据动画设置导航速度，如果是奔跑则速度
     {
         AnimatorStateInfo animatorInfo;
-        animatorInfo=ator.GetCurrentAnimatorStateInfo(0);
+        animatorInfo = ator.GetCurrentAnimatorStateInfo(0);
         if (animatorInfo.IsName("attack"))
         {
             agent.speed = 0.8f;
         }
-        else if(animatorInfo.IsName("run"))
+        else if (animatorInfo.IsName("run"))
         {
             agent.speed = 1.5f;
         }
-        else if(animatorInfo.IsName("walk"))
+        else if (animatorInfo.IsName("walk"))
         {
             agent.speed = 1f;
-        }else
+        }
+        else
         {
             agent.speed = 0f;
         }
@@ -391,7 +398,7 @@ public class enemy : MonoBehaviour
         for (int i = 0; i < viewAngleStep; i++)
         {
             // 每条射线都在forward_left的基础上偏转一点，最后一个正好偏转2*rugle度到视线最右侧
-            Vector3 v = Quaternion.Euler(0, (viewRugle*2 / viewAngleStep) * i, 0) * forward_left;
+            Vector3 v = Quaternion.Euler(0, (viewRugle * 2 / viewAngleStep) * i, 0) * forward_left;
             float currAngle = Mathf.Deg2Rad * v.y;
             float x = Mathf.Cos(currAngle);
             float y = Mathf.Sin(currAngle);
@@ -411,7 +418,7 @@ public class enemy : MonoBehaviour
                 pos = hitt.point;
             }
             vertices[i + 1] = transform.InverseTransformPoint(pos);
-            
+
             // 从玩家位置到pos画线段，只会在编辑器里看到
             Debug.DrawLine(transform.position, pos, Color.red);
 
@@ -465,7 +472,7 @@ public class enemy : MonoBehaviour
             }
 
         }
-        
+
         //void wait_duihua()
         //{
         //    rectTransform_two.gameObject.SetActive(false);
@@ -478,7 +485,7 @@ public class enemy : MonoBehaviour
             PursuitTime -= Time.deltaTime;
             runToPlayer();
         }
-        else if(PursuitTime<=0 && distance_enemy>0.1)
+        else if (PursuitTime <= 0 && distance_enemy > 0.1)
         {
             walkToBegin();
             //rectTransform.gameObject.SetActive(false);
@@ -499,7 +506,7 @@ public class enemy : MonoBehaviour
             //        }
             //    }
             //}
-            
+
         }
         getBreathe();
     }
@@ -511,17 +518,17 @@ public class enemy : MonoBehaviour
     }
     void walkToBegin()//将目标设置为最开始的起点
     {
-        if(Vector3.Distance(transform.position,begin) > 0.3f && !transform.GetComponent<walkto>().isWalkto)
+        if (Vector3.Distance(transform.position, begin) > 0.3f && !transform.GetComponent<walkto>().isWalkto)
         {
-            
+
             agent.destination = begin;
             ator.SetBool("isRun", false);
             ator.SetBool("isWalk", true);
         }
-        
+
         //GameUI1._Instance.UpdateDia(3);
         //showDia(3);
-       
+
     }
     void makeMesh()//生成mesh
     {
@@ -542,12 +549,12 @@ public class enemy : MonoBehaviour
         mesh.RecalculateNormals();
         mf.mesh = mesh;
         material = new Material(Shader.Find("Custom/changeColor"));
-        mr.material = material ;
+        mr.material = material;
         //mr.material.shader = shader;
         //mr.material.color = Color.red;
         //mr.material.color = Color.red;
     }
-    
+
     void getBreathe()
     {
         float distance_player = Vector3.Distance(goal.position, transform.position);
@@ -588,19 +595,19 @@ public class enemy : MonoBehaviour
     void walktoOink()
     {
         //Debug.Log(Vector3.Distance(v1, transform.position));
-        if(goal.transform.GetComponent<player>().isOink && Vector3.Distance(goal.position, transform.position)<10f && !isWalkToOink)
+        if (goal.transform.GetComponent<player>().isOink && Vector3.Distance(goal.position, transform.position) < 10f && !isWalkToOink)
         {
             v1 = goal.position;
             isWalkToOink = true;
         }
-        if(isWalkToOink && !isLook)
+        if (isWalkToOink && !isLook)
         {
             agent.destination = v1;
             //Debug.Log(v1);
             ator.SetBool("isWalk", true);
             ator.SetBool("isLook", false);
         }
-        if(Vector3.Distance(v1,transform.position)<0.1f && isWalkToOink)
+        if (Vector3.Distance(v1, transform.position) < 0.1f && isWalkToOink)
         {
             isLook = true;
             LookTime = 6f;
@@ -608,11 +615,11 @@ public class enemy : MonoBehaviour
         }
         if (LookTime >= 0)
         {
-            ator.SetBool("isWalk",false);
+            ator.SetBool("isWalk", false);
             ator.SetBool("isLook", true);
             LookTime -= Time.deltaTime;
         }
-        if(LookTime<=0 && isLook==true)
+        if (LookTime <= 0 && isLook == true)
         {
             isLook = false;
             isWalkToBegin = true;
@@ -620,10 +627,10 @@ public class enemy : MonoBehaviour
             ator.SetBool("isLook", false);
             //Debug.Log(isLook + " " + isWalkToBegin);
         }
-        if(isWalkToBegin && !isLook && !isWalkToOink)
+        if (isWalkToBegin && !isLook && !isWalkToOink)
         {
             walkToBegin();
-            if(Vector3.Distance(begin,transform.position)<0.1f)
+            if (Vector3.Distance(begin, transform.position) < 0.1f)
             {
                 ator.SetBool("isWalk", false);
                 ator.SetBool("isLook", false);

@@ -53,6 +53,10 @@ public class child1 : MonoBehaviour
             {
                 wait++;
             }
+            if(wait==0)
+            {
+                source.Stop();
+            }
             switch (wait)
             {
                 case 1:

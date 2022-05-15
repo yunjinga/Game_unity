@@ -35,7 +35,10 @@ public class daye : MonoBehaviour
     private void Update()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(NPC.transform.position);
-
+        if(num == 0)
+        {
+            source.Stop();
+        }
         if (Input.GetKeyDown(KeyCode.Space) && isTrigger == true)
         {
             num++;

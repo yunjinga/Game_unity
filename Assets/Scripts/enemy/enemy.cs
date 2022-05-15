@@ -106,11 +106,14 @@ public class enemy : MonoBehaviour
         music.playOnAwake = false;
         music.spatialBlend = 1;
         walkVoice = Resources.Load<AudioClip>("Music/peopleWalk");
+        agent = GetComponent<NavMeshAgent>();
+        
     }
     void Start()
     {
         biaoqing_1.SetActive(true);
         biaoqing_2.SetActive(false);
+        //agent.enabled = false;
         //rectTransform_two.gameObject.SetActive(false);
         //warn.gameObject.SetActive(false);
         //jingjie.gameObject.SetActive(false);
@@ -124,7 +127,7 @@ public class enemy : MonoBehaviour
         mesh.name = "mesh";
         //LookAtInit();
 
-        agent = GetComponent<NavMeshAgent>();
+        
 
         begin = transform.position;
         beginrotation = transform.localEulerAngles;
@@ -366,20 +369,28 @@ public class enemy : MonoBehaviour
         animatorInfo = ator.GetCurrentAnimatorStateInfo(0);
         if (animatorInfo.IsName("attack"))
         {
+           
             agent.speed = 0.8f;
         }
         else if (animatorInfo.IsName("run"))
         {
+            
             agent.speed = 1.5f;
         }
         else if (animatorInfo.IsName("walk"))
         {
+            
             agent.speed = 1f;
         }
         else
         {
             agent.speed = 0f;
         }
+        if(!ator.GetBool("isRun") && !ator.GetBool("isWalk") && !ator.GetBool("isAttack"))
+        {
+            agent.enabled = false;
+        }
+        
     }
     void DrawFieldOfView()
     {
@@ -512,6 +523,7 @@ public class enemy : MonoBehaviour
     }
     void runToPlayer()//目标设置为玩家
     {
+        agent.enabled = true;
         agent.destination = goal.position;
         ator.SetBool("isRun", true);
         isCatching = true;
@@ -520,7 +532,7 @@ public class enemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, begin) > 0.3f && !transform.GetComponent<walkto>().isWalkto)
         {
-
+            agent.enabled = true;
             agent.destination = begin;
             ator.SetBool("isRun", false);
             ator.SetBool("isWalk", true);
@@ -597,11 +609,13 @@ public class enemy : MonoBehaviour
         //Debug.Log(Vector3.Distance(v1, transform.position));
         if (goal.transform.GetComponent<player>().isOink && Vector3.Distance(goal.position, transform.position) < 10f && !isWalkToOink)
         {
+            
             v1 = goal.position;
             isWalkToOink = true;
         }
         if (isWalkToOink && !isLook)
         {
+            agent.enabled = true;
             agent.destination = v1;
             //Debug.Log(v1);
             ator.SetBool("isWalk", true);

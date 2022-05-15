@@ -25,7 +25,7 @@ public class child : MonoBehaviour
 
     int now = 1;
     string[] s = new string[50];
-    static string localPath = "Assets" + "\\" + "streamingAssetsPath" + "\\" + "child.xml";
+    static string localPath = "Assets" + "\\" + "streamingAssets" + "\\" + "child.xml";
     XmlDocument xml;
     XmlNodeList nodeList;
     int num = 1;
@@ -43,6 +43,7 @@ public class child : MonoBehaviour
         biaoqing_2.SetActive(false);
         biaoqing_1.SetActive(true);
         ator = transform.GetComponent<Animator>();
+        localPath = Application.dataPath + "/StreamingAssets/child.xml";
         if (File.Exists(localPath))
         {
             xml = new XmlDocument();

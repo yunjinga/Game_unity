@@ -14,7 +14,11 @@ public class position : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         PlayerPrefs.SetInt("l", 3);
+=======
+        PlayerPrefs.SetInt("l",0);
+>>>>>>> 254e23c1970e150d07e735b00e7f7e2c0068a0b6
         start1 = GameObject.Find("Start");
         start2 = GameObject.Find("Start2");
         start3 = GameObject.Find("Start3");

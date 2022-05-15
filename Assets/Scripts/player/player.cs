@@ -119,14 +119,19 @@ public class player : MonoBehaviour
         {
             if(ator.GetBool("isRun"))
             {
-                audioSource.pitch = 0.85f;
+                audioSource.pitch = 0.8f;
             }
             else
             {
                 audioSource.pitch = 0.7f;
             }
             audioSource.loop = true;
-            audioSource.volume = 0.7f;
+            audioSource.volume = 0.6f;
+        }
+        else if(audioSource.clip != walkVoice)
+        {
+            audioSource.loop = false;
+
         }
        
     }

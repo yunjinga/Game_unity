@@ -12,7 +12,7 @@ public class Crow : MonoBehaviour
     public float x;
     public float y;
     public int now = 0;
-    static string localPath = "Assets" + "\\" + "streamingAssetsPath" + "\\" + "1234.xml";
+    static string localPath ;
     XmlDocument xml;
     XmlNodeList nodeList;
     public GameObject player;
@@ -26,6 +26,9 @@ public class Crow : MonoBehaviour
     // Start is called before the first frame update
     void Start() //读取存储对话信息的表单
     {
+
+
+        localPath = Application.dataPath + "/StreamingAssets/1234.xml";
         if (File.Exists(localPath))
         {
             xml = new XmlDocument();

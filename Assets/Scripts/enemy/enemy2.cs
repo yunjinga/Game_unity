@@ -318,14 +318,17 @@ public class enemy2 : MonoBehaviour
         animatorInfo = ator.GetCurrentAnimatorStateInfo(0);
         if (animatorInfo.IsName("attack"))
         {
+            
             agent.speed = 0.8f;
         }
         else if (animatorInfo.IsName("run"))
         {
+           
             agent.speed = 1.5f;
         }
         else if (animatorInfo.IsName("walk"))
         {
+           
             agent.speed = 1f;
         }
         else
@@ -469,7 +472,7 @@ public class enemy2 : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, begin) > 0.1f && !transform.GetComponent<walkto>().isWalkto)
         {
-            Debug.Log(begin+" "+transform.position);
+            //Debug.Log(begin+" "+transform.position);
             agent.destination = begin;
             ator.SetBool("isRun", false);
             ator.SetBool("isWalk", true);

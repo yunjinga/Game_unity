@@ -98,7 +98,7 @@ public class Dove : MonoBehaviour
     public GameObject duihua;
     string[] s = new string[50];
     int now = 1;
-    static string localPath = "Assets" + "\\" + "streamingAssetsPath" + "\\" + "Dove.xml";
+    static string localPath;
     XmlDocument xml;
     XmlNodeList nodeList;
     public Text text;
@@ -129,10 +129,11 @@ public class Dove : MonoBehaviour
         {
             texture_1_2.SetActive(false);
         }
-       
+        localPath = Application.dataPath + "/StreamingAssets/Dove.xml";
         if (File.Exists(localPath))
         {
             xml = new XmlDocument();
+            
             xml.Load(localPath);//¼ÓÔØxmlÎÄ¼þ
             nodeList = xml.SelectSingleNode("Data").ChildNodes;
             foreach (XmlElement xe in nodeList)
@@ -156,9 +157,11 @@ public class Dove : MonoBehaviour
         
         if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
-            if(now==1)
+            //Debug.Log(now);
+            if (now == 1)
             {
                 tishi.SetActive(true);
+                
             }
             else if(now!=1)
             {

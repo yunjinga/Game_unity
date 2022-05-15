@@ -351,7 +351,7 @@ public class enemy : MonoBehaviour
         }
         else if (info.IsName("push") && !transform.GetComponent<cunzhishu>())
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, goal.transform.localPosition, 2 * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, goal.transform.localPosition, 3 * Time.deltaTime);
         }
     }
     void Rotate() //如果到达初始地点则恢复原本的面朝方向

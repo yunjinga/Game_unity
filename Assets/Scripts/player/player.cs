@@ -35,6 +35,7 @@ public class player : MonoBehaviour
     public AudioClip bushVoice;
     public AudioClip boxVoice;
 
+    Vector3 sped;
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -209,7 +210,7 @@ public class player : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         //Debug.Log(h);
-        Vector3 sped = new Vector3(h, 0, v);
+        sped = new Vector3(h, 0, v);
         #region 相机方向偏移
         Vector3 originSped = sped;
         if (CameraMgr.Instance.m_MainCamera != null)
@@ -316,7 +317,7 @@ public class player : MonoBehaviour
         Vector2 player2DPosition = Camera.main.WorldToScreenPoint(transform.position);
        
         recTransform.position = player2DPosition + new Vector2(xOffset, yOffset);
-        if (Input.GetKey(KeyCode.LeftShift) && rushTime > 0)//冲刺计时
+        if (Input.GetKey(KeyCode.LeftShift) && rushTime > 0 && sped!=Vector3.zero)//冲刺计时
         {
             if (player2DPosition.x > Screen.width || player2DPosition.x < 0 || player2DPosition.y > Screen.height || player2DPosition.y < 0)
             {

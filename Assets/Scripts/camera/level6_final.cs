@@ -9,6 +9,8 @@ public class level6_final : MonoBehaviour
     // Start is called before the first frame update
     public AudioSource source;
     public GameObject car;
+    public GameObject wupin;
+    public GameObject biaoqing;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +30,16 @@ public class level6_final : MonoBehaviour
     {
         Anim.SetActive(true);
         car.SetActive(true);
+        wupin.SetActive(false);
+        biaoqing.SetActive(false);
         source.Play();
     }
     private void OnTriggerExit(Collider other)
     {
         Anim.SetActive(false);
         car.SetActive(false);
+        wupin.SetActive(true);
+        biaoqing.SetActive(true);
         car.GetComponent<CinemachineDollyCart>().m_Position = 0;
     }
 }

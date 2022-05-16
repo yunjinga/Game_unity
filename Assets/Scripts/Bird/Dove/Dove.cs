@@ -110,6 +110,7 @@ public class Dove : MonoBehaviour
     bool isAll = false;
 
     public GameObject tishi;
+
     // Start is called before the first frame update
     private void Awake()
     {

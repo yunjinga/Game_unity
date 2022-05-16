@@ -14,7 +14,8 @@ public class Player_level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ator)
+        Time.timeScale = 1;
+        if (ator)
         ator.Play("idle");
     }
 }

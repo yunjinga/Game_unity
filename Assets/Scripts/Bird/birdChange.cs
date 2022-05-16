@@ -13,16 +13,17 @@ public class birdChange : MonoBehaviour
     public bool firstFly = false;
     void Awake()
     {
-        //head = GameObject.Find("1_1/Enemy1/NPC01_Apose (1) Variant/NPC_01_head");
+
     }
     void Start()
     {
-        //head = GameObject.Find("1_1/Enemy1/NPC01_Apose (1) Variant/NPC_01_head");
+
 
         //获取两种翅膀的组件和动画组件
+
         animator = this.GetComponent<Animator>();
-        arm_static.SetActive(false);
-        arm_fly.SetActive(true);
+        arm_static.SetActive(true);
+        arm_fly.SetActive(false);
         //head.SetActive(visible);
     }
 
@@ -34,16 +35,9 @@ public class birdChange : MonoBehaviour
         //判断动画是否结束来设置两种翅膀的显示与隐藏
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
         //Debug.Log(info.IsName("Fly"));
-        if (info.normalizedTime > 0.99f && info.IsName("Fly"))
+        if (animator.GetBool("isFly"))
         {
-
-            //if(firstFly==false)
-            //firstFly = !firstFly;
-            arm_static.SetActive(true);
-            arm_fly.SetActive(false);
-        }
-        else if (info.normalizedTime <= 0.99f && info.IsName("Fly"))
-        {
+            Debug.Log("爷爷飞了");
             arm_static.SetActive(false);
             arm_fly.SetActive(true);
         }

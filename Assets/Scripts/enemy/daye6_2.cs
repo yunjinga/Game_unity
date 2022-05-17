@@ -18,6 +18,7 @@ public class daye6_2 : MonoBehaviour
     public CinemachineVirtualCamera cvam;
     int num = 0;
     float wait = 0;
+    float wait1 = 0;
     //bool istalk = false;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,9 @@ public class daye6_2 : MonoBehaviour
         {
             case 1:
                 {
-                    duihua.SetActive(true);
+                    wait1 += Time.deltaTime;
+                    if(wait1>1.5) duihua.SetActive(true);
+                   
                     cvam.Priority = 11;
                     //gudin();
                     text.text = "游戏到这里就接近结束了，感谢你玩到这里";

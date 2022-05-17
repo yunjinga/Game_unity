@@ -11,8 +11,10 @@ public class child6_2 : MonoBehaviour
     public GameObject player;
     public GameObject duihua;
     public GameObject duihua_1;
+    public GameObject daye2;
     public Text text;
     public Text text1;
+    //public Text text2;
     public GameObject daye;
     //public RectTransform rectTransform;
     public bool istalk = false;
@@ -22,11 +24,14 @@ public class child6_2 : MonoBehaviour
     float wait = 0;
     public int level;
     public GameObject duihua_3;
+    //public GameObject duihua_2;
     public GameObject tr;
+    float wait1 = 0;
     //bool istalk = false;
     // Start is called before the first frame update
     void Start()
     {
+        //duihua_2.SetActive(false);
         duihua_3.SetActive(false);
         duihua_1.SetActive(false);
         tishi.SetActive(false);
@@ -54,7 +59,9 @@ public class child6_2 : MonoBehaviour
             {
                 case 1:
                     {
-                        duihua.SetActive(true);
+                        wait1 += Time.deltaTime;
+                        if(wait1>1.5)duihua.SetActive(true);
+                        
 
 
 
@@ -80,10 +87,10 @@ public class child6_2 : MonoBehaviour
                 case 3:
                     {
                         duihua_1.SetActive(false);
-                        text.text = "听起来好深奥的样子";
+                        //text.text = "听起来好深奥的样子";
                         if (level == 1) text.text = "听起来好深奥的样子";
                         //gudin();
-                        if (level == 2) text.text = "听起来好深奥的样子";
+                        if (level == 2) text.text = "拜托，你不要总打消我的工作积极性好吧！";
 
 
 
@@ -102,9 +109,13 @@ public class child6_2 : MonoBehaviour
                     {
                         Vector3 screenPos = Camera.main.WorldToScreenPoint(hand.transform.position);
                         Vector3 screenPos1 = Camera.main.WorldToScreenPoint(daye.transform.position);
-                        screenPos1.x += 100;
-                        screenPos.x += 80;
-                        screenPos.y += 80;
+                        Vector3 screenPos2 = Camera.main.WorldToScreenPoint(daye2.transform.position);
+                        screenPos1.x += 180;
+                        screenPos.x -= 170;
+                        screenPos.y += 60;
+                        //screenPos2.y += 100;
+                        screenPos2.x -= 100;
+
                         if (wait > 4)
                         {
                             duihua.transform.position = screenPos;
@@ -133,13 +144,13 @@ public class child6_2 : MonoBehaviour
                             //tishi.SetActive(false);
                             istalk = false;
                         }
-                        if (wait % 2 == 1&& wait > 4 && level == 2&&tr.GetComponent<level6_2>().level6==true)
-                        {
+                        if (wait % 2 == 1&& wait > 4 && level == 2)
+                        {duihua_3.transform.position = screenPos2;
                             duihua_3.SetActive(true);
                             
 
                         }
-                        if (wait % 2 == 0 && wait > 4 && level == 2 && tr.GetComponent<level6_2>().level6 == true)
+                        if (wait % 2 == 0 && wait > 4 && level == 2)// && tr.GetComponent<level6_2>().level6 == true)
                         {
                             duihua_3.SetActive(false);
                             //tishi.SetActive(false);
@@ -152,6 +163,9 @@ public class child6_2 : MonoBehaviour
         else if(Vector3.Distance(transform.position, player.transform.position) > 3f)
         {
             tishi.SetActive(false);
+            duihua.SetActive(false);
+            duihua_1.SetActive(false);
+            duihua_3.SetActive(false);
         }
     }
     

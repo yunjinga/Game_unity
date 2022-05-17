@@ -22,6 +22,7 @@ public class child1 : MonoBehaviour
     public CinemachineVirtualCamera cvam;
     
     float wait = 0;
+    float wait1 = 0;
     //bool istalk = false;
     // Start is called before the first frame update
     public AudioSource source;
@@ -44,7 +45,7 @@ public class child1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 3f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 1.5f)
         {
 
 
@@ -52,6 +53,7 @@ public class child1 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && !istalk)
             {
                 wait++;
+                
             }
             if(wait==0)
             {
@@ -61,7 +63,13 @@ public class child1 : MonoBehaviour
             {
                 case 1:
                     {
-                        duihua.SetActive(true);
+                        wait1 += Time.deltaTime;
+                        if (wait1 > 1.5)
+                        {
+                            duihua.SetActive(true);
+
+                        }
+                        
                         cvam.Priority = 11;
                         //gudin();
                         text.text = "ÄãÓÐÃÎÏëÂð£¿";
@@ -122,7 +130,7 @@ public class child1 : MonoBehaviour
         else
         {
             tishi.SetActive(false);
-
+            duihua.SetActive(false);
         }
     }
 }

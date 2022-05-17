@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Whistle : MonoBehaviour
 {
-   
+    public GameObject cube;
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.GetComponent<knapsack>())
@@ -25,6 +25,7 @@ public class Whistle : MonoBehaviour
                 }
                 // Destroy(gameObject);
                 Destroy(gameObject);
+                Destroy(cube);
             }
         }
     }

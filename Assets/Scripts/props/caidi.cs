@@ -11,13 +11,16 @@ public class caidi : MonoBehaviour
     public GameObject shaozi;
     public GameObject tishi;
     public GameObject player;
+    public GameObject hand;
+   
     //public GameObject baige;
     // public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
+       
         //texture = GameObject.Find("texture3_1");
-       // duihua = GameObject.Find("baige");
+        // duihua = GameObject.Find("baige");
         texture.SetActive(false);
         duihua.SetActive(false);
         tishi.SetActive(false);
@@ -49,10 +52,12 @@ public class caidi : MonoBehaviour
             texture.SetActive(false);
             duihua.SetActive(true);
         }
-        if (num == 3)
+        if (hand.active == true)
+        { if (num == 3)
         {
-            Vector3 position= Camera.main.WorldToScreenPoint(player.transform.position);
-            position.y += 150;
+            
+            Vector3 position= Camera.main.WorldToScreenPoint(hand.transform.position);
+            position.y += 100;
             texture.SetActive(false);
             duihua.SetActive(false);
             
@@ -65,6 +70,18 @@ public class caidi : MonoBehaviour
             isT = false;
 
         }
+
+        }
+        else
+        {
+            if (num == 3)
+            {
+                texture.SetActive(false);
+                duihua.SetActive(false);
+                isT = false;
+            }
+        }
+       
     }
     private void OnTriggerEnter(Collider collision)
     {

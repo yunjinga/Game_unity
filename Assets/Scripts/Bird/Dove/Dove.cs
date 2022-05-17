@@ -107,10 +107,10 @@ public class Dove : MonoBehaviour
     public GameObject texture_1_2;
     public RectTransform rectTransform;
     int num_texture = 0;
-    bool isAll = false;
-
+    public bool isAll = false;
+    public bool isdown = false;
     public GameObject tishi;
-
+    float wait = 0;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -168,14 +168,27 @@ public class Dove : MonoBehaviour
             {
                 tishi.SetActive(false);
             }
-            if (Input.GetKeyDown(KeyCode.Space) && now < num - 1 )
+            if ( now < num - 1 )
             {
-                duihua.SetActive(true);
-                gudin();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {isdown = true;
+               
+                //gudin();
                 
                 //text的值等于s[num++]
                 Debug.Log(s[now]);
                 text.text = s[now++];
+
+                }
+                if (isdown)
+                {
+                    wait += Time.deltaTime;
+                    if (wait > 1.5)
+                    { duihua.SetActive(true);
+
+                    }
+                }
+                
             }
             else if (Input.GetKeyDown(KeyCode.Space) && now == num - 1  && !isAll)
             {
@@ -208,6 +221,7 @@ public class Dove : MonoBehaviour
                     {
                         duihua.SetActive(false);
                         isAll = true;
+                        isdown = false;
                     }
                 }
                 else if(level != "L1")

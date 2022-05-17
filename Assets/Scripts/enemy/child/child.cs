@@ -30,7 +30,8 @@ public class child : MonoBehaviour
     XmlNodeList nodeList;
     int num = 1;
     public string level;//child几
-
+    float wait = 0;
+    bool isdown = false;
     bool isAll = false;
     //bool istalk = false;
     // Start is called before the first frame update
@@ -64,11 +65,70 @@ public class child : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    /*if (Vector3.Distance(transform.position, player.transform.position) < 1.5f)
+    {
+        //Debug.Log(now+" "+num);   
+        tishi.SetActive(true);
+        if ( now < num&&Input.GetKeyDown(KeyCode.Space))
+        {
+
+               // isdown = true;
+
+            cvam.Priority = 11;
+            //gudin();
+            text.text = s[now++]; duihua.SetActive(true);
+            istalk = true;
+            ator.SetBool("isTalk", true); wait += Time.deltaTime;
+                //Debug.Log(wait);
+
+
+            duihua_1.SetActive(true);biaoqing_1.SetActive(false);
+            biaoqing_2.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && istalk && now == num  && !isAll)
+        {
+            duihua_1.SetActive(false);
+            cvam.Priority = 5;
+            duihua.SetActive(false);
+            istalk=false;
+            biaoqing_2.SetActive(false);
+            biaoqing_1.SetActive(true);
+            ator.SetBool("isTalk", false);
+            isAll = true;
+        }
+        //如果说完了则进行最后一句
+        else if(Input.GetKeyDown(KeyCode.Space) && isAll &&!istalk)
+        {
+            duihua.SetActive(true);
+            duihua_1.SetActive(true);
+            biaoqing_1.SetActive(false);
+            biaoqing_2.SetActive(true);
+            cvam.Priority = 11;
+            istalk = true;
+            ator.SetBool("isTalk", true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Space) && istalk && isAll)
+        {
+            duihua_1.SetActive(false);
+            cvam.Priority = 5;
+            duihua.SetActive(false);
+            istalk = false;
+            biaoqing_2.SetActive(false);
+            biaoqing_1.SetActive(true);
+            ator.SetBool("isTalk", false);
+        }
+
+    }
+    else
+    {
+        tishi.SetActive(false);
+    }*/
+    云鲸:
         if (Vector3.Distance(transform.position, player.transform.position) < 3f)
         {
             //Debug.Log(now+" "+num);   
             tishi.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space)  && now < num)
+            if (Input.GetKeyDown(KeyCode.Space) && now < num)
             {
                 duihua.SetActive(true);
                 duihua_1.SetActive(true);
@@ -80,19 +140,19 @@ public class child : MonoBehaviour
                 istalk = true;
                 ator.SetBool("isTalk", true);
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && istalk && now == num  && !isAll)
+            else if (Input.GetKeyDown(KeyCode.Space) && istalk && now == num && !isAll)
             {
                 duihua_1.SetActive(false);
                 cvam.Priority = 5;
                 duihua.SetActive(false);
-                istalk=false;
+                istalk = false;
                 biaoqing_2.SetActive(false);
                 biaoqing_1.SetActive(true);
                 ator.SetBool("isTalk", false);
                 isAll = true;
             }
             //如果说完了则进行最后一句
-            else if(Input.GetKeyDown(KeyCode.Space) && isAll &&!istalk)
+            else if (Input.GetKeyDown(KeyCode.Space) && isAll && !istalk)
             {
                 duihua.SetActive(true);
                 duihua_1.SetActive(true);
@@ -102,7 +162,7 @@ public class child : MonoBehaviour
                 istalk = true;
                 ator.SetBool("isTalk", true);
             }
-            else if(Input.GetKeyDown(KeyCode.Space) && istalk && isAll)
+            else if (Input.GetKeyDown(KeyCode.Space) && istalk && isAll)
             {
                 duihua_1.SetActive(false);
                 cvam.Priority = 5;
@@ -118,6 +178,8 @@ public class child : MonoBehaviour
         {
             tishi.SetActive(false);
         }
+
+
     }
     //void gudin()
     //{
